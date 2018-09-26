@@ -1,4 +1,5 @@
 ﻿# FatturaElettronica.Extensions
+Estensioni per [FatturaElettronica.NET][fe]
 
 ## Caratteristiche
 
@@ -28,6 +29,8 @@ namespace DemoApp
 }
 ```
 
+Per una guida completa all'uso di Fattura Elettronica per .NET vedi il [repository principale][fe].
+
 ## Portabilità
 
 FatturaElettronica supporta .NET Standard v1.1, cosa che le permette di supportare un [ampio numero di piattaforme][netstandard].
@@ -46,6 +49,7 @@ dalla Package Console, oppure usare il comando equivalente in Visual Studio.
 
 FatturaElettronica è un progetto open source di [Nicola Iarocci][ni] e [Gestionale Amica][ga] rilasciato sotto licenza [BSD][bsd].
 
+[fe]: http://github.com/FatturaElettronica/FatturaElettronica.NET
 [pa]: https://www.agenziaentrate.gov.it/wps/file/Nsilib/Nsi/Schede/Comunicazioni/Fatture+e+corrispettivi/Fatture+e+corrispettivi+ST/ST+invio+di+fatturazione+elettronica/ST+Fatturazione+elettronica+-+Allegato+A/Allegato+A+-+Specifiche+tecniche+vers+1.1_22062018.pdf
 [bsd]: http://github.com/FatturaElettronica/FatturaElettronica.Extensions/blob/master/LICENSE
 [ga]: http://gestionaleamica.com

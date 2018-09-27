@@ -38,7 +38,7 @@ Per una guida completa all'uso di Fattura Elettronica per .NET vedi il [reposito
 
 ## Portabilità
 
-FatturaElettronica supporta .NET Standard v2.0, cosa che le permette di supportare un [ampio numero di piattaforme][netstandard].
+FatturaElettronica.Extensions supporta .NET Standard v2.0, cosa che le permette di supportare un [ampio numero di piattaforme][netstandard].
 
 ## Installazione
 

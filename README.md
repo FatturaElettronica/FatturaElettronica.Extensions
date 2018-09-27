@@ -38,7 +38,7 @@ Per una guida completa all'uso di Fattura Elettronica per .NET vedi il [reposito
 
 ## Portabilità
 
-FatturaElettronica supporta .NET Standard v1.1, cosa che le permette di supportare un [ampio numero di piattaforme][netstandard].
+FatturaElettronica supporta .NET Standard v2.0, cosa che le permette di supportare un [ampio numero di piattaforme][netstandard].
 
 ## Installazione
 
@@ -60,4 +60,4 @@ FatturaElettronica è un progetto open source di [Nicola Iarocci][ni] e [Gestion
 [ga]: http://gestionaleamica.com
 [ni]: https://nicolaiarocci.com
 [nuget]: https://www.nuget.org/packages/FatturaElettronica.Extensions/
-[netstandard]: https://github.com/dotnet/standard/blob/master/docs/versions/netstandard1.1.md
+[netstandard]: https://github.com/dotnet/standard/blob/master/docs/versions/netstandard2.0.md

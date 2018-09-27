@@ -51,8 +51,8 @@ FatturaElettronica.Extensions è su [NuGet][nuget] quindi tutto quel che serve �
 dalla Package Console, oppure usare il comando equivalente in Visual Studio.
 
 ## Licenza
-
 FatturaElettronica è un progetto open source di [Nicola Iarocci][ni] e [Gestionale Amica][ga] rilasciato sotto licenza [BSD][bsd].
+BouncyCastle, Copyright (c) 2000 - 2017 The Legion of the Bouncy Castle Inc. ([licenza][bc]) 
 
 [fe]: http://github.com/FatturaElettronica/FatturaElettronica.NET
 [pa]: https://www.agenziaentrate.gov.it/wps/file/Nsilib/Nsi/Schede/Comunicazioni/Fatture+e+corrispettivi/Fatture+e+corrispettivi+ST/ST+invio+di+fatturazione+elettronica/ST+Fatturazione+elettronica+-+Allegato+A/Allegato+A+-+Specifiche+tecniche+vers+1.1_22062018.pdf
@@ -61,3 +61,4 @@ FatturaElettronica è un progetto open source di [Nicola Iarocci][ni] e [Gestion
 [ni]: https://nicolaiarocci.com
 [nuget]: https://www.nuget.org/packages/FatturaElettronica.Extensions/
 [netstandard]: https://github.com/dotnet/standard/blob/master/docs/versions/netstandard2.0.md
+[bc]: http://www.bouncycastle.org/csharp/licence.html

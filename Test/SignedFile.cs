@@ -9,6 +9,8 @@ namespace Test
     [TestClass]
     public class SignedFile
     {
+        // TODO: test that invalid signature is reported as a FatturaElettronicaSignatureException.
+
         [TestMethod]
         public void ReadSignedFile()
         {

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FatturaElettronica.Extensions.csproj" />
+    <ProjectReference Include="..\FatturaElettronica.Extensions\FatturaElettronica.Extensions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

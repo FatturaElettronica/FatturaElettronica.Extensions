@@ -1,4 +1,14 @@
 Changelog
 =========
 
-- hic sunt leones.
+v0.1.1
+======
+
+- Enhancement: improve the signature-stripping algorithm. We don't really need a temporary folder.
+
+v0.1.0
+======
+
+Released on September 27, 2018.
+
+- Initial release.

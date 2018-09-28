@@ -32,7 +32,7 @@ namespace FatturaElettronica.Extensions
             }
 
 
-            string outFile = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(filePath));
+            string outFile = Path.GetTempFileName();
             using (var fileStream = new FileStream(outFile, FileMode.Create, FileAccess.Write))
             {
                 signedFile.SignedContent.Write(fileStream);

@@ -32,6 +32,18 @@ namespace DemoApp
                 var datiDocumento = documento.DatiGenerali.DatiGeneraliDocumento;
                 Console.WriteLine($"fattura num. {datiDocumento.Numero} del {datiDocumento.Data}");
             }
+
+
+			// Generare automaticamente il nome del file.
+			int incrementaleUltimaFattura = 100;
+            var filenameGenerator = new FatturaElettronicaFilename(new Common.IdFiscaleIVA() { IdPaese = "IT", IdCodice = "0123456789" });
+            var filename = filenameGenerator.FileName(incrementaleUltimaFattura);
+            using (var w = XmlWriter.Create(filename, new XmlWriterSettings { Indent = true }))
+			{
+                fattura.WriteXml(w);
+            }
+			// Per memorizzare l'incrementale corrente in uno storage:
+			int incrementaleDaMemorizzare = filenameGenerator.CurrentIndex;
         }
     }
 }

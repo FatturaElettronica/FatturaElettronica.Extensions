@@ -10,9 +10,7 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/FatturaElettronica/FatturaElettronica.Extensions/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/FatturaElettronica/FatturaElettronica.Extensions</RepositoryUrl>
     <PackageProjectUrl>http://fatturaelettronicaopensource.org</PackageProjectUrl>
-    <AssemblyVersion>0.1.0.0</AssemblyVersion>
-    <FileVersion>0.1.0.0</FileVersion>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

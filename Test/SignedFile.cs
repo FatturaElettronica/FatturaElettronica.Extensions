@@ -12,6 +12,7 @@ namespace Test
     public class SignedFile
     {
         // TODO: test that invalid signature is reported as a FatturaElettronicaSignatureException.
+        // TODO: CI integration on AppVeyor.
 
         [TestMethod]
         public void ReadXMLSigned()

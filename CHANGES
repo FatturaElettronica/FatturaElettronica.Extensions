@@ -1,8 +1,10 @@
 Changelog
 =========
 
-v0.1.1
+v0.2
 ======
+
+Released on October 1, 2018
 
 - New: `WriteXML(string filePath)` extension method.
 - New: `ReadXML(string filePath)` extension method.

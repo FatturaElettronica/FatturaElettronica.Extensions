@@ -11,7 +11,7 @@ namespace FatturaElettronica.Extensions
     {
         public static void ReadXmlSigned(this Fattura fattura, string filePath)
         {
-            CmsSignedData signedFile = new CmsSignedData(new FileStream(filePath, FileMode.Open));
+            CmsSignedData signedFile = new CmsSignedData(new FileStream(filePath, FileMode.Open, FileAccess.Read));
             IX509Store certStore = signedFile.GetCertificates("Collection");
             ICollection certs = certStore.GetMatches(new X509CertStoreSelector());
             SignerInformationStore signerStore = signedFile.GetSignerInfos();
@@ -41,6 +41,20 @@ namespace FatturaElettronica.Extensions
             using (var r = XmlReader.Create(outFile, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
             {
                 fattura.ReadXml(r);
+            }
+        }
+        public static void ReadXml(this Fattura fattura, string filePath)
+        {
+            using (var r = XmlReader.Create(filePath, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
+            {
+                fattura.ReadXml(r);
+            }
+        }
+        public static void WriteXml(this Fattura fattura, string filePath)
+        {
+            using (var w = XmlWriter.Create(filePath, new XmlWriterSettings { Indent = true }))
+            {
+                fattura.WriteXml(w);
             }
         }
     }

@@ -3,9 +3,12 @@ Estensioni per [FatturaElettronica.NET][fe]
 
 ## Caratteristiche
 
-- `ReadXmlSigned`: extension method che consente di leggere un file firmato digitalmente con algoritmo CADES (.p7m)
+- `ReadXml(string filePath)`: extension method che consente di leggere direttamente un file XML non firmato senza necessita di aprire uno stream.
+- `WriteXml(string filePath)`: extension method che consente di scrivere un file XML non firmato senza necessita di aprire uno stream.
+- `ReadXmlSigned(string filePath)`: extension method che consente di leggere un file firmato digitalmente con algoritmo CADES (.p7m).
 
 ## Utilizzo
+In questo esempio leggiamo una fattura elettronica firmata digitalmente usando l'extension method `ReadXmlSigned`.
 
 ```cs
 using System;

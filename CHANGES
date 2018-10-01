@@ -4,6 +4,9 @@ Changelog
 v0.1.1
 ======
 
+- New: `WriteXML(string filePath)` extension method.
+- New: `ReadXML(string filePath)` extension method.
+- Fix: open the signed file in Read mode.
 - Enhancement: improve the signature-stripping algorithm. We don't really need a temporary folder.
 
 v0.1.0

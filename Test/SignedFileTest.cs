@@ -9,7 +9,7 @@ using System.Xml;
 namespace Test
 {
     [TestClass]
-    public class SignedFile
+    public class SignedFileTest
     {
         // TODO: test that invalid signature is reported as a FatturaElettronicaSignatureException.
         // TODO: CI integration on AppVeyor.

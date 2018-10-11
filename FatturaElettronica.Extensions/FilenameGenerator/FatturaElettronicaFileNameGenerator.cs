@@ -1,18 +1,16 @@
 ﻿using FatturaElettronica.Common;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FatturaElettronica.Extensions
 {
     /// <summary>
     /// Factory per la creazione del filename
     /// </summary>
-    public class FatturaElettronicaFilename
+    public class FatturaElettronicaFileNameGenerator
     {
         private IdFiscaleIVA _idFiscaleIVA;
-        private FatturaExtensionType _fatturaExtensionType;
-        public FatturaElettronicaFilename(IdFiscaleIVA idFiscale, FatturaExtensionType fatturaType = FatturaExtensionType.Plain)
+        private FatturaElettronicaFileNameExtensionType _fatturaExtensionType;
+        public FatturaElettronicaFileNameGenerator(IdFiscaleIVA idFiscale, FatturaElettronicaFileNameExtensionType fatturaType = FatturaElettronicaFileNameExtensionType.Plain)
         {
             _idFiscaleIVA = idFiscale ?? throw new ArgumentNullException("Id Fiscale non specificato");
             if (_idFiscaleIVA.IdPaese == null || _idFiscaleIVA.IdPaese.Length < 2)
@@ -26,27 +24,27 @@ namespace FatturaElettronica.Extensions
         /// </summary>
         /// <param name="lastBillingNumber"></param>
         /// <returns></returns>
-        public string FileName(int lastBillingNumber) => $"{_idFiscaleIVA.IdPaese}{_idFiscaleIVA.IdCodice}_{GetNextFilename(lastBillingNumber)}{Extension}";
+        public string GetNextFileName(int lastBillingNumber) => $"{_idFiscaleIVA.IdPaese}{_idFiscaleIVA.IdCodice}_{GetNext(lastBillingNumber)}{Extension}";
         /// <summary>
         /// Restituisce il nome del file partendo dall'ultimo nome del file generato
         /// </summary>
         /// <param name="lastBillingNumber"></param>
         /// <returns></returns>
-        public string FileName(string lastBillingNumber) => $"{_idFiscaleIVA.IdPaese}{_idFiscaleIVA.IdCodice}_{GetNextFilename(lastBillingNumber)}{Extension}";
+        public string GetNextFileName(string lastBillingNumber) => $"{_idFiscaleIVA.IdPaese}{_idFiscaleIVA.IdCodice}_{GetNext(lastBillingNumber)}{Extension}";
 
         private char[] baseChars = new char[] { '0','1','2','3','4','5','6','7','8','9',
             'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 
         public int? CurrentIndex { get; set; } = null;
 
-        private string Extension => _fatturaExtensionType == FatturaExtensionType.Plain ? ".xml" : ".xml.p7m";
+        private string Extension => _fatturaExtensionType == FatturaElettronicaFileNameExtensionType.Plain ? ".xml" : ".xml.p7m";
 
         /// <summary>
         /// Restituisce il Progressivo Invio Successivo
         /// </summary>
         /// <param name="lastNumber"></param>
         /// <returns></returns>
-        private string GetNextFilename(int lastNumber)
+        private string GetNext(int lastNumber)
         {
             CurrentIndex = ++lastNumber;
             string value = ToString(CurrentIndex.Value);
@@ -60,9 +58,9 @@ namespace FatturaElettronica.Extensions
         /// </summary>
         /// <param name="lastStringNumber"></param>
         /// <returns></returns>
-        private string GetNextFilename(string lastStringNumber)
+        private string GetNext(string lastStringNumber)
         {
-            return GetNextFilename(ToInteger(lastStringNumber));
+            return GetNext(ToInteger(lastStringNumber));
         }
 
         /// <summary>

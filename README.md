@@ -1,4 +1,5 @@
 ﻿# FatturaElettronica.Extensions
+
 Estensioni per [FatturaElettronica.NET][fe]
 
 ## Caratteristiche
@@ -9,6 +10,7 @@ Estensioni per [FatturaElettronica.NET][fe]
 - `FatturaElettronicaFileNameGenerator`: classe per la generazione di nomi file conformi allo standard fattura elettronica.
 
 ## Utilizzo
+
 In questo esempio leggiamo una fattura elettronica firmata digitalmente usando l'extension method `ReadXmlSigned`.
 
 ```cs
@@ -34,16 +36,17 @@ namespace DemoApp
                 Console.WriteLine($"fattura num. {datiDocumento.Numero} del {datiDocumento.Data}");
             }
 
-           // Generare automaticamente il nome del file.
-	   int ultimaFattura = 100;
-	   var fileNameGenerator = new FatturaElettronicaFileNameGenerator(new Common.IdFiscaleIVA() { IdPaese = "IT", IdCodice = "0123456789" });
-	   var fileName = fileNameGenerator.GetNextFileName(ultimaFattura);
-	   using (var w = XmlWriter.Create(fileName, new XmlWriterSettings { Indent = true }))
-	   {
-	   	fattura.WriteXml(w);
-	   }
-	   // Per memorizzare l'incrementale corrente in uno storage:
-	   int numeroDaMemorizzare = fileNameGenerator.CurrentIndex;
+            // Generare automaticamente il nome del file.
+            var ultimaFattura = 100;
+            var fileNameGenerator = new FatturaElettronicaFileNameGenerator(
+                new IdFiscaleIVA() { IdPaese = "IT", IdCodice = "0123456789" }
+            );
+            var fileName = fileNameGenerator.GetNextFileName(ultimaFattura);
+
+            // Output: IT0123456789_0002T.xml
+            Console.WriteLine(fileName);
+            // Output: 101
+            Console.WriteLine(fileNameGenerator.CurrentIndex);
         }
     }
 }
@@ -66,8 +69,9 @@ FatturaElettronica.Extensions è su [NuGet][nuget] quindi tutto quel che serve �
 dalla Package Console, oppure usare il comando equivalente in Visual Studio.
 
 ## Licenza
+
 FatturaElettronica è un progetto open source di [Nicola Iarocci][ni] e [Gestionale Amica][ga] rilasciato sotto licenza [BSD][bsd].
-BouncyCastle, Copyright (c) 2000 - 2017 The Legion of the Bouncy Castle Inc. ([licenza][bc]) 
+BouncyCastle, Copyright (c) 2000 - 2017 The Legion of the Bouncy Castle Inc. ([licenza][bc]
 
 [fe]: http://github.com/FatturaElettronica/FatturaElettronica.NET
 [pa]: https://www.agenziaentrate.gov.it/wps/file/Nsilib/Nsi/Schede/Comunicazioni/Fatture+e+corrispettivi/Fatture+e+corrispettivi+ST/ST+invio+di+fatturazione+elettronica/ST+Fatturazione+elettronica+-+Allegato+A/Allegato+A+-+Specifiche+tecniche+vers+1.1_22062018.pdf

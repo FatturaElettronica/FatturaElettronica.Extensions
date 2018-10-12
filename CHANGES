@@ -6,6 +6,7 @@ v0.3
 
 - New: `FatturaElettronicaFileNameGenerator` class.
 - Dependency: FatturaElettronica v0.8.4.
+- CI integration on AppVeyor. Closes #2.
 
 v0.2
 ====

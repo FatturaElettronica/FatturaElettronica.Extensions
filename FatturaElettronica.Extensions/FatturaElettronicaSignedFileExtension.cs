@@ -26,7 +26,7 @@ namespace FatturaElettronica.Extensions
                     SignerInformation signer = tempSigner as SignerInformation;
                     if (!signer.Verify(certification.GetPublicKey()))
                     {
-                        throw new FatturaElettronicaSignatureException(nameof(Resources.ErrorMessages.SignatureException));
+                        throw new FatturaElettronicaSignatureException(Resources.ErrorMessages.SignatureException);
                     }
                 }
             }

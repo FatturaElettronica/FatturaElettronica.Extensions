@@ -1,4 +1,5 @@
 ﻿using FatturaElettronica.Extensions;
+using FatturaElettronica.Extensions.Resources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using FatturaElettronica.Common;
@@ -12,9 +13,9 @@ namespace Test
         public void Initialize()
         {
             Assert.ThrowsException<ArgumentNullException>(() => new FatturaElettronicaFileNameGenerator(null));
-            Assert.ThrowsException<ArgumentException>(() => new FatturaElettronicaFileNameGenerator(new IdFiscaleIVA()));
-            Assert.ThrowsException<ArgumentException>(() => new FatturaElettronicaFileNameGenerator(new IdFiscaleIVA() { IdPaese = "I" }));
-            Assert.ThrowsException<ArgumentException>(() => new FatturaElettronicaFileNameGenerator(new IdFiscaleIVA() { IdPaese = "IT" }));
+            Assert.ThrowsException<ArgumentException>(() => new FatturaElettronicaFileNameGenerator(new IdFiscaleIVA()), ErrorMessages.IdFiscaleIsMissing);
+            Assert.ThrowsException<ArgumentException>(() => new FatturaElettronicaFileNameGenerator(new IdFiscaleIVA() { IdPaese = "I" }),ErrorMessages.IdPaeseIsWrongOrMissing);
+            Assert.ThrowsException<ArgumentException>(() => new FatturaElettronicaFileNameGenerator(new IdFiscaleIVA() { IdPaese = "IT" }), ErrorMessages.IdCodiceIsMissing);
             var filename = new FatturaElettronicaFileNameGenerator(new IdFiscaleIVA() { IdPaese = "IT", IdCodice = "0123456789" });
             Assert.IsTrue(filename != null);
         }
@@ -60,6 +61,12 @@ namespace Test
             var filename = filenameGenerator.GetNextFileName(36);
             Assert.IsTrue(filename == "IT0123456789_00011.xml");
             Assert.AreEqual(37, filenameGenerator.CurrentIndex);
+        }
+        [TestMethod]
+        public void LastBillingNumberLength()
+        {
+            var filenameGenerator = new FatturaElettronicaFileNameGenerator(new IdFiscaleIVA() { IdPaese = "IT", IdCodice = "0123456789" });
+            Assert.ThrowsException<ArgumentException>(() => filenameGenerator.GetNextFileName("123456"), ErrorMessages.LastBillingNumberIsTooLong);
         }
     }
 }

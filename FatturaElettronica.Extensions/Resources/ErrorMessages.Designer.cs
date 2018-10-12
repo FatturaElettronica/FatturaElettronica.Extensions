@@ -22,7 +22,7 @@ namespace FatturaElettronica.Extensions.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ErrorMessages {
+    public class ErrorMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace FatturaElettronica.Extensions.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FatturaElettronica.Extensions.Resources.ErrorMessages", typeof(ErrorMessages).Assembly);
@@ -51,7 +51,7 @@ namespace FatturaElettronica.Extensions.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,45 @@ namespace FatturaElettronica.Extensions.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IdCodice non specificato.
+        /// </summary>
+        public static string IdCodiceIsMissing {
+            get {
+                return ResourceManager.GetString("IdCodiceIsMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IdFiscale non specificato.
+        /// </summary>
+        public static string IdFiscaleIsMissing {
+            get {
+                return ResourceManager.GetString("IdFiscaleIsMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IdPaese non specificato oppure errato.
+        /// </summary>
+        public static string IdPaeseIsWrongOrMissing {
+            get {
+                return ResourceManager.GetString("IdPaeseIsWrongOrMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Il progressivo è troppo elevato.
+        /// </summary>
+        public static string LastBillingNumberIsTooLong {
+            get {
+                return ResourceManager.GetString("ProgressivoOverflow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Una firma non corrisponde al certificato contenuto nel file.
         /// </summary>
-        internal static string SignatureException {
+        public static string SignatureException {
             get {
                 return ResourceManager.GetString("SignatureException", resourceCulture);
             }

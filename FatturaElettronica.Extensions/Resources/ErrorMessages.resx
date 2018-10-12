@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="IdCodiceIsMissing" xml:space="preserve">
+    <value>IdCodice non specificato</value>
+  </data>
+  <data name="IdFiscaleIsMissing" xml:space="preserve">
+    <value>IdFiscale non specificato</value>
+  </data>
+  <data name="IdPaeseIsWrongOrMissing" xml:space="preserve">
+    <value>IdPaese non specificato oppure errato</value>
+  </data>
+  <data name="ProgressivoOverflow" xml:space="preserve">
+    <value>Il progressivo è troppo elevato</value>
+  </data>
   <data name="SignatureException" xml:space="preserve">
     <value>Una firma non corrisponde al certificato contenuto nel file</value>
   </data>

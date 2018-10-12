@@ -1,4 +1,5 @@
 ﻿using FatturaElettronica.Common;
+using FatturaElettronica.Extensions.Resources;
 using System;
 
 namespace FatturaElettronica.Extensions
@@ -12,11 +13,11 @@ namespace FatturaElettronica.Extensions
         private FatturaElettronicaFileNameExtensionType _fatturaExtensionType;
         public FatturaElettronicaFileNameGenerator(IdFiscaleIVA idFiscale, FatturaElettronicaFileNameExtensionType fatturaType = FatturaElettronicaFileNameExtensionType.Plain)
         {
-            _idFiscaleIVA = idFiscale ?? throw new ArgumentNullException("Id Fiscale non specificato");
+            _idFiscaleIVA = idFiscale ?? throw new ArgumentNullException(ErrorMessages.IdFiscaleIsMissing);
             if (_idFiscaleIVA.IdPaese == null || _idFiscaleIVA.IdPaese.Length < 2)
-                throw new ArgumentException("IdPaese non specificato");
+                throw new ArgumentException(ErrorMessages.IdPaeseIsWrongOrMissing);
             if (_idFiscaleIVA.IdCodice == null)
-                throw new ArgumentException("IdCodice non specificato");
+                throw new ArgumentException(ErrorMessages.IdCodiceIsMissing);
             _fatturaExtensionType = fatturaType;
         }
         /// <summary>
@@ -49,7 +50,7 @@ namespace FatturaElettronica.Extensions
             CurrentIndex = ++lastNumber;
             string value = ToString(CurrentIndex.Value);
             if (value.Length > 5)
-                throw new OverflowException("Il progressivo è troppo elevato");
+                throw new ArgumentException(ErrorMessages.LastBillingNumberIsTooLong);
             return value.PadLeft(5, '0');
         }
 

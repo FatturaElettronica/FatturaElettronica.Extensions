@@ -6,7 +6,7 @@ using FatturaElettronica.Common;
 namespace Test
 {
     [TestClass]
-    public class FilenameGeneratorTest
+    public class FatturaElettronicaFilenameGeneratorTest
     {
         [TestMethod]
         public void Initialize()

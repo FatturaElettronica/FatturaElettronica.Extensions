@@ -7,6 +7,7 @@ v0.3
 Released on October 12, 2018
 
 - New: `FatturaElettronicaFileNameGenerator` class.
+- Fix: Wrong BouncyCastle dependency. Closes #4.
 - Fix: `FatturaElettronicaSignatureException` doesn't report the correct error description.
 - Dependency: FatturaElettronica v0.8.4.
 - CI integration on AppVeyor. Closes #2.

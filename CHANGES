@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v0.4
+====
+
+Released on October 27, 2018
+
+- New: `FromJson(string json)` extesion method.
+- Dependency: FatturaElettronica 0.9.
+- Dependency: Newtonsoft.Json (new).
+
 v0.3
 ====
 

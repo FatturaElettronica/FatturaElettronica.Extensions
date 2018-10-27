@@ -7,7 +7,7 @@ using Org.BouncyCastle.X509.Store;
 
 namespace FatturaElettronica.Extensions
 {
-    public static class FatturaElettronicaSignedFile
+    public static class FatturaElettronicaXmlExtensions
     {
         public static void ReadXml(this Fattura fattura, string filePath)
         {

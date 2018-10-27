@@ -20,6 +20,7 @@ namespace DemoApp
             fattura.WriteXml("Copia di IT02182030391_31.xml");
 
             ReadSignedFile();
+            JsonDeserialize(fattura);
             GetNextFileName();
         }
 
@@ -42,6 +43,22 @@ namespace DemoApp
                 var datiDocumento = documento.DatiGenerali.DatiGeneraliDocumento;
                 Console.WriteLine($"fattura num. {datiDocumento.Numero} del {datiDocumento.Data}");
             }
+
+        }
+
+        static void JsonDeserialize(Fattura source)
+        {
+
+            // Serializza fattura in JSON.
+            var json = source.ToJson();
+
+            // Deserializza da JSON
+            var copia = Fattura.CreateInstance(Instance.Privati);
+            copia.FromJson(json);
+
+            // Le due fatture sono uguali.
+            Console.WriteLine($"{source.Header.DatiTrasmissione.CodiceDestinatario}");
+            Console.WriteLine($"{copia.Header.DatiTrasmissione.CodiceDestinatario}");
 
         }
         /// Ottiene e stampa un nome di file valido per fattura elettronica

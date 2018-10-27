@@ -4,9 +4,10 @@ Estensioni per [FatturaElettronica.NET][fe]
 
 ## Caratteristiche
 
-- `ReadXml(string filePath)`: extension method che consente di leggere direttamente un file XML non firmato senza necessita di aprire uno stream.
-- `WriteXml(string filePath)`: extension method che consente di scrivere un file XML non firmato senza necessita di aprire uno stream.
-- `ReadXmlSigned(string filePath)`: extension method che consente di leggere un file firmato digitalmente con algoritmo CADES (.p7m).
+- `ReadXml(string filePath)`: consente di leggere direttamente un file XML non firmato senza necessita di aprire uno stream.
+- `WriteXml(string filePath)`: consente di scrivere un file XML non firmato senza necessita di aprire uno stream.
+- `ReadXmlSigned(string filePath)`: consente di leggere un file firmato digitalmente con algoritmo CADES (.p7m).
+- `FromJson(string json)`: carica la fattura direttamente da una stringa JSON.
 - `FatturaElettronicaFileNameGenerator`: classe per la generazione di nomi file conformi allo standard fattura elettronica.
 
 ## Utilizzo
@@ -36,6 +37,7 @@ namespace DemoApp
             fattura.WriteXml("Copia di IT02182030391_31.xml");
 
             ReadSignedFile();
+            JsonDeserialize(fattura);
             GetNextFileName();
         }
 
@@ -60,6 +62,22 @@ namespace DemoApp
             }
 
         }
+
+        static void JsonDeserialize(Fattura source)
+        {
+
+            // Serializza fattura in JSON.
+            var json = source.ToJson();
+
+            // Deserializza da JSON
+            var copia = Fattura.CreateInstance(Instance.Privati);
+            copia.FromJson(json);
+
+            // Le due fatture sono uguali.
+            Console.WriteLine($"{source.Header.DatiTrasmissione.CodiceDestinatario}");
+            Console.WriteLine($"{copia.Header.DatiTrasmissione.CodiceDestinatario}");
+
+        }
         /// Ottiene e stampa un nome di file valido per fattura elettronica
         static void GetNextFileName()
         {
@@ -76,6 +94,7 @@ namespace DemoApp
         }
     }
 }
+
 ```
 
 Per una guida completa all'uso di Fattura Elettronica per .NET vedi il [repository principale][fe].

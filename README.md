@@ -31,53 +31,30 @@ namespace DemoApp
         {
             var fattura = Fattura.CreateInstance(Instance.Privati);
 
-            // Lettura diretta da XML (senza necessità di uno stream aperto)
+            // Lettura da file XML
             fattura.ReadXml("IT02182030391_31.xml");
-            // Scrive direttamente su XML (senza necessità passare uno stream)
-            fattura.WriteXml("Copia di IT02182030391_31.xml");
 
-            ReadSignedFile();
-            JsonDeserialize(fattura);
-            GetNextFileName();
-        }
-
-        /// Legge una fattura elettronica con firma digitale (.p7m)
-        static void ReadSignedFile()
-        {
-            // Inizializza istanza.
-            var fattura = Fattura.CreateInstance(Instance.Privati);
-
-            // Legge file con firma digitale
+            // Lettura da file XML con firma digitale
             fattura.ReadXmlSigned("IT02182030391_31.xml.p7m");
 
-            // Ragione sociale del CedentePrestatore
-            var ragioneSociale = fattura.Header.CedentePrestatore.DatiAnagrafici.Anagrafica.Denominazione;
-            Console.WriteLine($"Cedente/Prestatore: {ragioneSociale}");
+            // Scrittura su file XML
+            fattura.WriteXml("Copia di IT02182030391_31.xml");
 
-            // Numero e data di ogni documento presente nel file
-            foreach (var documento in fattura.Body)
-            {
-                var datiDocumento = documento.DatiGenerali.DatiGeneraliDocumento;
-                Console.WriteLine($"fattura num. {datiDocumento.Numero} del {datiDocumento.Data}");
-            }
+            // Serializzazione verso JSON
+            var json = fattura.ToJson();
 
-        }
-
-        static void JsonDeserialize(Fattura source)
-        {
-
-            // Serializza fattura in JSON.
-            var json = source.ToJson();
-
-            // Deserializza da JSON
             var copia = Fattura.CreateInstance(Instance.Privati);
+
+            // Deserializzazione da JSON
             copia.FromJson(json);
 
             // Le due fatture sono uguali.
-            Console.WriteLine($"{source.Header.DatiTrasmissione.CodiceDestinatario}");
+            Console.WriteLine($"{fattura.Header.DatiTrasmissione.CodiceDestinatario}");
             Console.WriteLine($"{copia.Header.DatiTrasmissione.CodiceDestinatario}");
 
+            GetNextFileName();
         }
+
         /// Ottiene e stampa un nome di file valido per fattura elettronica
         static void GetNextFileName()
         {

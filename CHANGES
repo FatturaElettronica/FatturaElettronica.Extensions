@@ -1,8 +1,10 @@
 Changelog
 =========
 
-In development
-==============
+v1.0.1
+======
+
+Released on November 9, 2018
 
 - Bump Portable.BouncyCastle to 1.8.4.
 - Bump MSTest.TestFramework to 1.3.2.

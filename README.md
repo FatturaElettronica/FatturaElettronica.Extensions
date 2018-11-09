@@ -20,7 +20,7 @@ using System.Xml;
 using FatturaElettronica;
 using FatturaElettronica.Common;
 using FatturaElettronica.Extensions;
-using FatturaElettronica.Impostazioni;
+using FatturaElettronica.Defaults;
 
 
 namespace DemoApp
@@ -31,26 +31,25 @@ namespace DemoApp
         {
             var fattura = Fattura.CreateInstance(Instance.Privati);
 
-            // Lettura da file XML
+            // Lettura diretta da XML (senza necessità di uno stream aperto)
             fattura.ReadXml("IT02182030391_31.xml");
 
-            // Lettura da file XML con firma digitale
+            // Legge file con firma digitale
             fattura.ReadXmlSigned("IT02182030391_31.xml.p7m");
 
-            // Scrittura su file XML
+            // Scrive direttamente su XML (senza necessità passare uno stream)
             fattura.WriteXml("Copia di IT02182030391_31.xml");
 
-            // Serializzazione verso JSON
+            // Serializza fattura in JSON.
             var json = fattura.ToJson();
 
             var copia = Fattura.CreateInstance(Instance.Privati);
 
-            // Deserializzazione da JSON
+            // Deserializza da JSON
             copia.FromJson(json);
-
             // Le due fatture sono uguali.
-            Console.WriteLine($"{fattura.Header.DatiTrasmissione.CodiceDestinatario}");
-            Console.WriteLine($"{copia.Header.DatiTrasmissione.CodiceDestinatario}");
+            Console.WriteLine($"{fattura.FatturaElettronicaHeader.DatiTrasmissione.CodiceDestinatario}");
+            Console.WriteLine($"{copia.FatturaElettronicaHeader.DatiTrasmissione.CodiceDestinatario}");
 
             GetNextFileName();
         }
@@ -96,7 +95,6 @@ FatturaElettronica è un progetto open source di [Nicola Iarocci][ni] e [Gestion
 BouncyCastle, Copyright (c) 2000 - 2017 The Legion of the Bouncy Castle Inc. ([licenza][bc]
 
 [fe]: http://github.com/FatturaElettronica/FatturaElettronica.NET
-[pa]: https://www.agenziaentrate.gov.it/wps/file/Nsilib/Nsi/Schede/Comunicazioni/Fatture+e+corrispettivi/Fatture+e+corrispettivi+ST/ST+invio+di+fatturazione+elettronica/ST+Fatturazione+elettronica+-+Allegato+A/Allegato+A+-+Specifiche+tecniche+vers+1.1_22062018.pdf
 [bsd]: http://github.com/FatturaElettronica/FatturaElettronica.Extensions/blob/master/LICENSE
 [ga]: http://gestionaleamica.com
 [ni]: https://nicolaiarocci.com

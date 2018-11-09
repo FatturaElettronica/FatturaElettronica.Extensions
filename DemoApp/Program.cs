@@ -3,7 +3,7 @@ using System.Xml;
 using FatturaElettronica;
 using FatturaElettronica.Common;
 using FatturaElettronica.Extensions;
-using FatturaElettronica.Impostazioni;
+using FatturaElettronica.Defaults;
 
 
 namespace DemoApp
@@ -31,8 +31,8 @@ namespace DemoApp
             // Deserializza da JSON
             copia.FromJson(json);
             // Le due fatture sono uguali.
-            Console.WriteLine($"{fattura.Header.DatiTrasmissione.CodiceDestinatario}");
-            Console.WriteLine($"{copia.Header.DatiTrasmissione.CodiceDestinatario}");
+            Console.WriteLine($"{fattura.FatturaElettronicaHeader.DatiTrasmissione.CodiceDestinatario}");
+            Console.WriteLine($"{copia.FatturaElettronicaHeader.DatiTrasmissione.CodiceDestinatario}");
 
             GetNextFileName();
         }

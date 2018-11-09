@@ -1,6 +1,6 @@
 using FatturaElettronica;
 using FatturaElettronica.Extensions;
-using FatturaElettronica.Impostazioni;
+using FatturaElettronica.Defaults;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Org.BouncyCastle.Cms;
 using System.IO;
@@ -18,7 +18,7 @@ namespace Test
         {
             var f = Fattura.CreateInstance(Instance.Privati);
             f.ReadXmlSigned("Samples/IT02182030391_31.xml.p7m");
-            Assert.AreEqual("31", f.Header.DatiTrasmissione.ProgressivoInvio);
+            Assert.AreEqual("31", f.FatturaElettronicaHeader.DatiTrasmissione.ProgressivoInvio);
         }
         [TestMethod]
         public void ReadXMLSignedThrowsOnNonSignedFile()

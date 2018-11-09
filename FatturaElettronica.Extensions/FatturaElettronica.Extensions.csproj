@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="newtonsoft.json" Version="11.0.2" />
-    <PackageReference Include="Portable.BouncyCastle" Version="1.8.3.37" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.4" />
     <PackageReference Include="FatturaElettronica" Version="1.0.1" />
   </ItemGroup>
 

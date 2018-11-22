@@ -43,5 +43,10 @@ namespace FatturaElettronica.Extensions
                 fattura.ReadXml(r);
             }
         }
+
+        public static void SignXml(this Fattura fattura, X509Certificate certification, string p7mFilePath)
+        {
+            
+        }
     }
 }

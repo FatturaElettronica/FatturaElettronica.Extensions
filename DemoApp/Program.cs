@@ -8,6 +8,10 @@ using FatturaElettronica.Defaults;
 
 namespace DemoApp
 {
+    //TODO:
+    //- generazione file pfx di esempio
+    //- scrivere un test case
+
     class Program
     {
         static void Main(string[] args)
@@ -16,6 +20,9 @@ namespace DemoApp
 
             // Lettura diretta da XML (senza necessità di uno stream aperto)
             fattura.ReadXml("IT02182030391_32.xml");
+            
+            // Firma digitale del file xml con file pfx
+            fattura.SignXml("idsrv3test.pfx", "idsrv3test", @"IT02182030391_32.xml.pm7");
 
             // Legge file con firma digitale
             fattura.ReadXmlSigned("IT02182030391_31.xml.p7m");

@@ -26,5 +26,11 @@ namespace Test
             var f = Fattura.CreateInstance(Instance.Privati);
             Assert.ThrowsException<CmsException>(() => f.ReadXmlSigned("Samples/IT02182030391_32.xml"));
         }
+        [TestMethod]
+        public void SignXmlThrowsOnNonSignedFile()
+        {
+            var f = Fattura.CreateInstance(Instance.Privati);            
+            Assert.ThrowsException<System.Exception>(() => f.SignXml("Samples/idsrv3test.pfx", "idsrv3test", "Samples/IT02182030391_32.xml.p7m"));
+        }
     }
 }

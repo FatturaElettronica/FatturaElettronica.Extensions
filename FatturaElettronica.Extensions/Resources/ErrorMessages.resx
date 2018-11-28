@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="FirmaException" xml:space="preserve">
+    <value>Impossibile firmare il contenuto del file</value>
+  </data>
   <data name="IdCodiceIsMissing" xml:space="preserve">
     <value>IdCodice non specificato</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="IdPaeseIsWrongOrMissing" xml:space="preserve">
     <value>IdPaese non specificato oppure errato</value>
+  </data>
+  <data name="PfxIsMissing" xml:space="preserve">
+    <value>Il file pfx non esiste</value>
   </data>
   <data name="ProgressivoOverflow" xml:space="preserve">
     <value>Il progressivo è troppo elevato</value>

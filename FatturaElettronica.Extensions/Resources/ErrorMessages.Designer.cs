@@ -61,6 +61,15 @@ namespace FatturaElettronica.Extensions.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Impossibile firmare il contenuto del file.
+        /// </summary>
+        public static string FirmaException {
+            get {
+                return ResourceManager.GetString("FirmaException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IdCodice non specificato.
         /// </summary>
         public static string IdCodiceIsMissing {
@@ -88,9 +97,18 @@ namespace FatturaElettronica.Extensions.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Il file pfx non esiste.
+        /// </summary>
+        public static string PfxIsMissing {
+            get {
+                return ResourceManager.GetString("PfxIsMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Il progressivo è troppo elevato.
         /// </summary>
-        public static string LastBillingNumberIsTooLong {
+        public static string ProgressivoOverflow {
             get {
                 return ResourceManager.GetString("ProgressivoOverflow", resourceCulture);
             }

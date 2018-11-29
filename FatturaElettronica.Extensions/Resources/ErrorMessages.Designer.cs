@@ -94,26 +94,27 @@ namespace FatturaElettronica.Extensions.Resources {
             get {
                 return ResourceManager.GetString("IdPaeseIsWrongOrMissing", resourceCulture);
             }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Il file pfx non esiste.
-        /// </summary>
-        public static string PfxIsMissing {
-            get {
-                return ResourceManager.GetString("PfxIsMissing", resourceCulture);
-            }
-        }
-        
+        }        
         /// <summary>
         ///   Looks up a localized string similar to Il progressivo è troppo elevato.
         /// </summary>
-        public static string ProgressivoOverflow {
+        public static string LastBillingNumberIsTooLong
+        {
             get {
                 return ResourceManager.GetString("ProgressivoOverflow", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Il file pfx non esiste.
+        /// </summary>
+        public static string PfxIsMissing
+        {
+            get
+            {
+                return ResourceManager.GetString("PfxIsMissing", resourceCulture);
+            }
+        }
         /// <summary>
         ///   Looks up a localized string similar to Una firma non corrisponde al certificato contenuto nel file.
         /// </summary>

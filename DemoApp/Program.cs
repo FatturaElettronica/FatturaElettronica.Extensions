@@ -8,10 +8,6 @@ using FatturaElettronica.Defaults;
 
 namespace DemoApp
 {
-    //TODO:
-    //- generazione file pfx di esempio
-    //- scrivere un test case
-
     class Program
     {
         static void Main(string[] args)

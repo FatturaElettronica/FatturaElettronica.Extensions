@@ -29,8 +29,11 @@ namespace Test
         [TestMethod]
         public void SignXmlThrowsOnNonSignedFile()
         {
-            var f = Fattura.CreateInstance(Instance.Privati);            
-            Assert.ThrowsException<System.Exception>(() => f.SignXml("Samples/idsrv3test.pfx", "idsrv3test", "Samples/IT02182030391_32.xml.p7m"));
+            if (File.Exists("Samples/IT02182030391_32.xml.p7m"))
+                File.Delete("Samples/IT02182030391_32.xml.p7m");
+            var f = Fattura.CreateInstance(Instance.Privati);
+            f.SignXml("Samples/idsrv3test.pfx", "idsrv3test", "Samples/IT02182030391_32.xml.p7m");
+            Assert.IsTrue(File.Exists("Samples/IT02182030391_32.xml.p7m"));
         }
     }
 }

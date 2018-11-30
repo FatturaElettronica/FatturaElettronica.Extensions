@@ -18,7 +18,8 @@ namespace DemoApp
             fattura.ReadXml("IT02182030391_32.xml");
             
             // Firma digitale del file xml con file pfx
-            fattura.SignXml("idsrv3test.pfx", "idsrv3test", @"IT02182030391_32.xml.pm7");
+            fattura.SignXml("idsrv3test.pfx", "idsrv3test", "IT02182030391_32.xml.pm7");
+            fattura.ReadXmlSigned("IT02182030391_32.xml.pm7");
 
             // Legge file con firma digitale
             fattura.ReadXmlSigned("IT02182030391_31.xml.p7m");

@@ -48,15 +48,15 @@ namespace FatturaElettronica.Extensions
             }
         }
 
-        public static void SignXml(this Fattura fattura, string pfxFile, string pfxPassword, string p7mFilePath)
+        public static void WriteXmlSigned(this Fattura fattura, string pfxFile, string pfxPassword, string p7mFilePath)
         {
             if (!File.Exists(pfxFile))
                 throw new FatturaElettronicaSignatureException(Resources.ErrorMessages.PfxIsMissing);
 
             var cert = new X509Certificate2(pfxFile, pfxPassword);
-            SignXml(fattura, cert, p7mFilePath);
+            WriteXmlSigned(fattura, cert, p7mFilePath);
         }
-        public static void SignXml(this Fattura fattura, X509Certificate2 cert, string p7mFilePath)
+        public static void WriteXmlSigned(this Fattura fattura, X509Certificate2 cert, string p7mFilePath)
         {
             string res = string.Empty;
             string tempFile = Path.GetTempFileName();

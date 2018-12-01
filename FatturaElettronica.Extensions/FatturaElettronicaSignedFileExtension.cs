@@ -68,11 +68,11 @@ namespace FatturaElettronica.Extensions
             {
                 fattura.WriteXml(tempFile);
 
-                ContentInfo content = new ContentInfo(File.ReadAllBytes(tempFile));
+                ContentInfo content = new ContentInfo(new Oid("1.2.840.113549.1.7.1", "PKCS 7 Data") ,File.ReadAllBytes(tempFile));
                 SignedCms signedCms = new SignedCms(SubjectIdentifierType.IssuerAndSerialNumber, content, false);
                 CmsSigner signer = new CmsSigner(cert);
                 signer.IncludeOption = X509IncludeOption.EndCertOnly;
-                signer.DigestAlgorithm = new Oid("SHA256");
+                signer.DigestAlgorithm = new Oid("2.16.840.1.101.3.4.2.1", "SHA256");
                 signer.SignedAttributes.Add(new Pkcs9SigningTime(DateTime.Now));
                 try
                 {

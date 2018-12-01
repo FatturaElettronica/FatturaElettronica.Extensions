@@ -48,7 +48,7 @@ namespace FatturaElettronica.Extensions
             }
         }
 
-        public static void SignXml(this Fattura fattura, string pfxFile,string pfxPassword, string p7mFilePath)
+        public static void SignXml(this Fattura fattura, string pfxFile, string pfxPassword, string p7mFilePath)
         {
             if (!File.Exists(pfxFile))
                 throw new FatturaElettronicaSignatureException(Resources.ErrorMessages.PfxIsMissing);
@@ -68,7 +68,7 @@ namespace FatturaElettronica.Extensions
             {
                 fattura.WriteXml(tempFile);
 
-                ContentInfo content = new ContentInfo(new Oid("1.2.840.113549.1.7.1", "PKCS 7 Data") ,File.ReadAllBytes(tempFile));
+                ContentInfo content = new ContentInfo(new Oid("1.2.840.113549.1.7.1", "PKCS 7 Data"), File.ReadAllBytes(tempFile));
                 SignedCms signedCms = new SignedCms(SubjectIdentifierType.IssuerAndSerialNumber, content, false);
                 CmsSigner signer = new CmsSigner(cert);
                 signer.IncludeOption = X509IncludeOption.EndCertOnly;
@@ -102,7 +102,7 @@ namespace FatturaElettronica.Extensions
                 byte[] signature = signedCms.Encode();
                 File.WriteAllBytes(p7mFilePath, signature);
             }
-            catch(Exception ex)
+            catch (Exception)
             {
                 throw new FatturaElettronicaSignatureException(Resources.ErrorMessages.FirmaException);
             }
@@ -111,7 +111,7 @@ namespace FatturaElettronica.Extensions
                 if (File.Exists(tempFile))
                     File.Delete(tempFile);
             }
-            
+
         }
     }
 }

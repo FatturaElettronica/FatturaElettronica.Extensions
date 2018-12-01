@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v1.1
+====
+
+Released on December 1, 2018
+
+- New: `WriteXmlSigned` method.
+
 v1.0.1
 ======
 

@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Nicola Iarocci</Authors>
     <Company>CIR 2000</Company>
-    <Description>Estensioni per FatturaElettronica.NET. Consente lettura di fatture firmate digitalmente (.p7m).</Description>
+    <Description>Estensioni per FatturaElettronica.NET. Consente lettura e scrittura di file firmati digitalmente (.p7m).</Description>
     <Copyright>Copyright © CIR2000 2018-2019</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/FatturaElettronica/FatturaElettronica.Extensions/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/FatturaElettronica/FatturaElettronica.Extensions</RepositoryUrl>

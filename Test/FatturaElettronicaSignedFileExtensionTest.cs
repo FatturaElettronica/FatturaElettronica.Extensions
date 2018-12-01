@@ -26,5 +26,21 @@ namespace Test
             var f = Fattura.CreateInstance(Instance.Privati);
             Assert.ThrowsException<CmsException>(() => f.ReadXmlSigned("Samples/IT02182030391_32.xml"));
         }
+        [TestMethod]
+        public void WriteXmlSigned()
+        {
+            if (File.Exists("Samples/IT02182030391_32.xml.p7m"))
+                File.Delete("Samples/IT02182030391_32.xml.p7m");
+            var f = Fattura.CreateInstance(Instance.Privati);
+            f.WriteXmlSigned("Samples/idsrv3test.pfx", "idsrv3test", "Samples/IT02182030391_32.xml.p7m");
+            Assert.IsTrue(File.Exists("Samples/IT02182030391_32.xml.p7m"));
+        }
+        [TestMethod]
+        public void WriteXmlSignedThrosOnMissingPfxFile()
+        {
+            var f = Fattura.CreateInstance(Instance.Privati);
+            Assert.ThrowsException<FatturaElettronicaSignatureException>(() =>
+                f.WriteXmlSigned("Samples/notreally.pfx", "idsrv3test", "Samples/IT02182030391_32.xml.p7m"));
+        }
     }
 }

@@ -15,7 +15,10 @@ namespace DemoApp
             var fattura = Fattura.CreateInstance(Instance.Privati);
 
             // Lettura diretta da XML (senza necessità di uno stream aperto)
-            fattura.ReadXml("IT02182030391_31.xml");
+            fattura.ReadXml("IT02182030391_32.xml");
+
+            // Firma digitale del file xml con file pfx
+            fattura.WriteXmlSigned("idsrv3test.pfx", "idsrv3test", "IT02182030391_32.xml.pm7");
 
             // Legge file con firma digitale
             fattura.ReadXmlSigned("IT02182030391_31.xml.p7m");

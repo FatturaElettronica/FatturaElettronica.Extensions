@@ -7,6 +7,8 @@ v1.1
 Released on December 1, 2018
 
 - New: `WriteXmlSigned` method.
+- Bump MSTest.TestFramework to 1.4.0
+- Bump MSTest.TestAdapter to 1.4.0
 
 v1.0.1
 ======

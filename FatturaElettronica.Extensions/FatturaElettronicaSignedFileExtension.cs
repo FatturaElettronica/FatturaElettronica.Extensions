@@ -47,6 +47,37 @@ namespace FatturaElettronica.Extensions
                 fattura.ReadXml(r);
             }
         }
+        
+        public static void ReadXmlSigned(this Fattura fattura, Stream stream)
+		{
+			stream.Position = 0;
+			CmsSignedData signedFile = new CmsSignedData(stream);
+
+			IX509Store certStore = signedFile.GetCertificates("Collection");
+			ICollection certs = certStore.GetMatches(new X509CertStoreSelector());
+			SignerInformationStore signerStore = signedFile.GetSignerInfos();
+			ICollection signers = signerStore.GetSigners();
+
+			foreach (object tempCertification in certs)
+			{
+				Org.BouncyCastle.X509.X509Certificate certification = tempCertification as Org.BouncyCastle.X509.X509Certificate;
+
+				foreach (object tempSigner in signers)
+				{
+					SignerInformation signer = tempSigner as SignerInformation;
+					if (!signer.Verify(certification.GetPublicKey()))
+					{
+						throw new FatturaElettronicaSignatureException("SignatureException");
+					}
+				}
+			}
+
+			using (var fileStream = new MemoryStream())
+			{
+				signedFile.SignedContent.Write(fileStream);
+				fattura.ReadXml(fileStream);
+			}
+		}
 
         public static void WriteXmlSigned(this Fattura fattura, string pfxFile, string pfxPassword, string p7mFilePath)
         {

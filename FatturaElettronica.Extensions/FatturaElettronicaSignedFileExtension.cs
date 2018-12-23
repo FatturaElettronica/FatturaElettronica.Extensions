@@ -15,36 +15,39 @@ namespace FatturaElettronica.Extensions
     {
         public static void ReadXmlSigned(this Fattura fattura, string filePath)
         {
-            CmsSignedData signedFile = new CmsSignedData(new FileStream(filePath, FileMode.Open, FileAccess.Read));
-            IX509Store certStore = signedFile.GetCertificates("Collection");
-            ICollection certs = certStore.GetMatches(new X509CertStoreSelector());
-            SignerInformationStore signerStore = signedFile.GetSignerInfos();
-            ICollection signers = signerStore.GetSigners();
-
-            foreach (object tempCertification in certs)
+            using (var inputStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                Org.BouncyCastle.X509.X509Certificate certification = tempCertification as Org.BouncyCastle.X509.X509Certificate;
+                CmsSignedData signedFile = new CmsSignedData(inputStream);
+                IX509Store certStore = signedFile.GetCertificates("Collection");
+                ICollection certs = certStore.GetMatches(new X509CertStoreSelector());
+                SignerInformationStore signerStore = signedFile.GetSignerInfos();
+                ICollection signers = signerStore.GetSigners();
 
-                foreach (object tempSigner in signers)
+                foreach (object tempCertification in certs)
                 {
-                    SignerInformation signer = tempSigner as SignerInformation;
-                    if (!signer.Verify(certification.GetPublicKey()))
+                    Org.BouncyCastle.X509.X509Certificate certification = tempCertification as Org.BouncyCastle.X509.X509Certificate;
+
+                    foreach (object tempSigner in signers)
                     {
-                        throw new FatturaElettronicaSignatureException(Resources.ErrorMessages.SignatureException);
+                        SignerInformation signer = tempSigner as SignerInformation;
+                        if (!signer.Verify(certification.GetPublicKey()))
+                        {
+                            throw new FatturaElettronicaSignatureException(Resources.ErrorMessages.SignatureException);
+                        }
                     }
                 }
-            }
 
 
-            string outFile = Path.GetTempFileName();
-            using (var fileStream = new FileStream(outFile, FileMode.Create, FileAccess.Write))
-            {
-                signedFile.SignedContent.Write(fileStream);
-            }
+                string outFile = Path.GetTempFileName();
+                using (var fileStream = new FileStream(outFile, FileMode.Create, FileAccess.Write))
+                {
+                    signedFile.SignedContent.Write(fileStream);
+                }
 
-            using (var r = XmlReader.Create(outFile, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
-            {
-                fattura.ReadXml(r);
+                using (var r = XmlReader.Create(outFile, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
+                {
+                    fattura.ReadXml(r);
+                }
             }
         }
 

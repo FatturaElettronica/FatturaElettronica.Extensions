@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.2
+====
+
+- Fix: `ReadXmlSigned` doesn't release the input file. Closes #17.
+
 v1.1
 ====
 

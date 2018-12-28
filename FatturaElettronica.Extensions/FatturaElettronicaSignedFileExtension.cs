@@ -48,6 +48,8 @@ namespace FatturaElettronica.Extensions
                 {
                     fattura.ReadXml(r);
                 }
+
+                inputStream.Close();
             }
         }
 

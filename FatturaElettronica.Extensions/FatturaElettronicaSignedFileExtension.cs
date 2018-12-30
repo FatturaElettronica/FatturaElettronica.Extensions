@@ -39,14 +39,24 @@ namespace FatturaElettronica.Extensions
 
 
                 string outFile = Path.GetTempFileName();
-                using (var fileStream = new FileStream(outFile, FileMode.Create, FileAccess.Write))
-                {
-                    signedFile.SignedContent.Write(fileStream);
-                }
 
-                using (var r = XmlReader.Create(outFile, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
+                try
                 {
-                    fattura.ReadXml(r);
+                    using (var fileStream = new FileStream(outFile, FileMode.Create, FileAccess.Write))
+                    {
+                        signedFile.SignedContent.Write(fileStream);
+                    }
+
+                    using (var r = XmlReader.Create(outFile, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
+                    {
+                        fattura.ReadXml(r);
+                        r.Close();
+                    }
+                }
+                finally
+                {
+                    if (File.Exists(outFile))
+                        File.Delete(outFile);
                 }
 
                 inputStream.Close();

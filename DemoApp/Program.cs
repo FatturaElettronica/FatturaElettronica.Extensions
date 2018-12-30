@@ -29,7 +29,7 @@ namespace DemoApp
 
 
             // Scrive direttamente su PDF (senza necessità passare uno stream)
-            fattura.WritePdf("Samples/Copia di IT02182030391_31.pdf", "Samples/fatturaordinaria_v1.2.xslt");
+            fattura.WritePdf("Samples/Copia di IT02182030391_31.pdf", "Samples/FoglioStileAssoSoftware.xsl");
 
 
             // Serializza fattura in JSON.

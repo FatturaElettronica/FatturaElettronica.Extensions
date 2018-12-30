@@ -34,27 +34,29 @@ namespace FatturaElettronica.Extensions
             xt.Transform(tmpXmlFile, tmpHtmlFile);
             File.Delete(tmpXmlFile);
 
-            var html = new FileStream(tmpHtmlFile, FileMode.Open);
-
-            using (var writer = new Pdf.PdfWriter(outputPath))
+            using (var html = new FileStream(tmpHtmlFile, FileMode.Open))
             {
-                var pdf = new Pdf.PdfDocument(writer);
-                pdf.SetDefaultPageSize(Geom.PageSize.A4);
+                using (var writer = new Pdf.PdfWriter(outputPath))
+                {
+                    var pdf = new Pdf.PdfDocument(writer);
+                    pdf.SetDefaultPageSize(Geom.PageSize.A4);
 
-                ConverterProperties converterProperties = new ConverterProperties()
-                    .SetBaseUri(".")
-                    .SetCreateAcroForm(false)
-                    .SetCssApplierFactory(new DefaultCssApplierFactory())
-                    .SetFontProvider(new DefaultFontProvider())
-                    .SetMediaDeviceDescription(new MediaDeviceDescription(MediaType.PRINT))
-                    .SetOutlineHandler(new OutlineHandler())
-                    .SetTagWorkerFactory(new DefaultTagWorkerFactory());
+                    ConverterProperties converterProperties = new ConverterProperties()
+                        .SetBaseUri(".")
+                        .SetCreateAcroForm(false)
+                        .SetCssApplierFactory(new DefaultCssApplierFactory())
+                        .SetFontProvider(new DefaultFontProvider())
+                        .SetMediaDeviceDescription(new MediaDeviceDescription(MediaType.PRINT))
+                        .SetOutlineHandler(new OutlineHandler())
+                        .SetTagWorkerFactory(new DefaultTagWorkerFactory());
 
-                HtmlConverter.ConvertToPdf(html, pdf, converterProperties);
+                    HtmlConverter.ConvertToPdf(html, pdf, converterProperties);
+                }
+
+                html.Close();
             }
 
-            html.Close();
-            File.Delete(tmpHtmlFile);
+            //File.Delete(tmpHtmlFile);
         }
     }
 }

@@ -13,30 +13,33 @@ namespace FatturaElettronica.Extensions
 {
     public static class FatturaElettronicaSignedFileExtension
     {
-        public static void ReadXmlSigned(this Fattura fattura, string filePath)
+        public static void ReadXmlSigned(this Fattura fattura, string filePath, bool validateSignature = true)
         {
             using (var inputStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
                 CmsSignedData signedFile = new CmsSignedData(inputStream);
-                IX509Store certStore = signedFile.GetCertificates("Collection");
-                ICollection certs = certStore.GetMatches(new X509CertStoreSelector());
-                SignerInformationStore signerStore = signedFile.GetSignerInfos();
-                ICollection signers = signerStore.GetSigners();
 
-                foreach (object tempCertification in certs)
+                if (validateSignature)
                 {
-                    Org.BouncyCastle.X509.X509Certificate certification = tempCertification as Org.BouncyCastle.X509.X509Certificate;
+                    IX509Store certStore = signedFile.GetCertificates("Collection");
+                    ICollection certs = certStore.GetMatches(new X509CertStoreSelector());
+                    SignerInformationStore signerStore = signedFile.GetSignerInfos();
+                    ICollection signers = signerStore.GetSigners();
 
-                    foreach (object tempSigner in signers)
+                    foreach (object tempCertification in certs)
                     {
-                        SignerInformation signer = tempSigner as SignerInformation;
-                        if (!signer.Verify(certification.GetPublicKey()))
+                        Org.BouncyCastle.X509.X509Certificate certification = tempCertification as Org.BouncyCastle.X509.X509Certificate;
+
+                        foreach (object tempSigner in signers)
                         {
-                            throw new FatturaElettronicaSignatureException(Resources.ErrorMessages.SignatureException);
+                            SignerInformation signer = tempSigner as SignerInformation;
+                            if (!signer.Verify(certification.GetPublicKey()))
+                            {
+                                throw new FatturaElettronicaSignatureException(Resources.ErrorMessages.SignatureException);
+                            }
                         }
                     }
                 }
-
 
                 string outFile = Path.GetTempFileName();
                 using (var fileStream = new FileStream(outFile, FileMode.Create, FileAccess.Write))

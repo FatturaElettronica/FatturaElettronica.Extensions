@@ -4,6 +4,7 @@ Changelog
 v1.2
 ====
 
+- New: `validateSignature` option for `ReadXMLSigned` method. Closes #21.
 - Fix: `ReadXmlSigned` doesn't release the input file. Closes #17.
 - Dump FatturaElettronica to 1.0.2.
 

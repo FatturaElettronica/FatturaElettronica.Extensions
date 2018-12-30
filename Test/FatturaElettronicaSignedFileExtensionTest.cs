@@ -14,6 +14,16 @@ namespace Test
         // TODO: test that invalid signature is reported as a FatturaElettronicaSignatureException.
 
         [TestMethod]
+        public void ReadXMLSignedValidateSignatureDisabled()
+        {
+            // TODO: ideally we'd need a .p7m with an invalida signature in order
+            // to properly test this.
+
+            var f = Fattura.CreateInstance(Instance.Privati);
+            f.ReadXmlSigned("Samples/IT02182030391_31.xml.p7m", validateSignature: false);
+            Assert.AreEqual("31", f.FatturaElettronicaHeader.DatiTrasmissione.ProgressivoInvio);
+        }
+        [TestMethod]
         public void ReadXMLSigned()
         {
             var f = Fattura.CreateInstance(Instance.Privati);

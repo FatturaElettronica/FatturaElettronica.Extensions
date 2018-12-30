@@ -78,44 +78,42 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-				<style type="text/css">
+				<style>
 					#fattura-container { width: 100%; position: relative; }
-
-					#fattura-elettronica { font-family: sans-serif; margin-left: auto; margin-right: auto; max-width: 1280px; min-width: 930px; padding: 0; }
-					#fattura-elettronica .versione { font-size: 11px; float:right; color: #777777; }
-					#fattura-elettronica h1 { padding: 20px 0 0 0; margin: 0; font-size: 30px; }
-					#fattura-elettronica h2 { padding: 20px 0 0 0; margin: 0; font-size: 20px; }
-					#fattura-elettronica h3 { padding: 20px 0 0 0; margin: 0; font-size: 25px; }
-					#fattura-elettronica h4 { padding: 20px 0 0 0; margin: 0; font-size: 20px; }
-					#fattura-elettronica h5 { padding: 15px 0 0 0; margin: 0;
-					font-size: 17px; font-style: italic; }
-					#fattura-elettronica ul { list-style-type: none; margin: 0 !important; padding: 15px 0 0 40px !important; }
+					#fattura-elettronica { font-family: Arial, Helvetica, sans-serif; margin-left: auto; margin-right: auto; max-width: 1280px; min-width: 630px; padding: 0; }
+					#fattura-elettronica .versione { font-size: 8px; float:right; color: #777777; }
+					#fattura-elettronica h1 { padding: 20px 0 0 0; margin: 0; font-size: 20px; }
+					#fattura-elettronica h2 { padding: 20px 0 0 0; margin: 0; font-size: 15px; }
+					#fattura-elettronica h3 { padding: 20px 0 0 0; margin: 0; font-size: 16px; }
+					#fattura-elettronica h4 { padding: 20px 0 0 0; margin: 0; font-size: 15px; }
+					#fattura-elettronica h5 { padding: 15px 0 0 0; margin: 0; font-size: 12px; font-style: italic; }
+					#fattura-elettronica ul { list-style-type: none; margin: 0 !important; padding: 10px 0 0 40px !important; }
 					#fattura-elettronica ul li {}
 					#fattura-elettronica ul li span { font-weight: bold; }
 					#fattura-elettronica div { padding: 0; margin: 0; }
 
 					#fattura-elettronica
 					div.page {
-					background-color: #fff !important;
-					position: relative;
-
-					margin: 20px 0
-					50px 0;
-					padding: 60px;
-
-					background: -moz-linear-gradient(0% 0 360deg, #FFFFFF, #F2F2F2 20%, #FFFFFF) repeat scroll 0 0 transparent;
-					border: 1px solid #CCCCCC;
-					-webkitbox-shadow: 0 0 10px rgba(0, 0, 0,
-					0.3);
-					-mozbox-shadow: 0
-					0 10px rgba(0, 0, 0, 0.3);
-					box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-
-					background: url('logo_sdi_trasparente.jpg') 98% 50px no-repeat;
+						background-color: #fff !important;
+						position: relative;
+						margin: 20px 0
+						50px 0;
+						padding: 60px;
+						background: -moz-linear-gradient(0% 0 360deg, #FFFFFF, #F2F2F2 20%, #FFFFFF) repeat scroll 0 0 transparent;
+						border: 1px solid #CCCCCC;
+						-webkitbox-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+						-mozbox-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+						box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+						background: url('logo_sdi_trasparente.jpg') 98% 50px no-repeat;
 					}
 					#fattura-elettronica div.footer { padding: 50px 0 0 0; margin: 0; font-size: 11px; text-align: center; color: #777777; }
+					
+					@page {
+                		@bottom-right {
+                    	content: "Page " counter(page) " of " counter(pages);
+                }
 				</style>
+				
 			</head>
 			<body>
 				<div id="fattura-container">

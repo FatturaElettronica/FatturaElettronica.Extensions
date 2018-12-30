@@ -7,8 +7,11 @@ using System.Xml.Xsl;
 using iText.Html2pdf;
 using Font = iText.Html2pdf.Resolver.Font;
 using Geom = iText.Kernel.Geom;
-using iText.Kernel.Pdf;
+using Pdf = iText.Kernel.Pdf;
+using iText.Html2pdf.Css.Apply.Impl;
 using iText.StyledXmlParser.Css.Media;
+using iText.Html2pdf.Attach.Impl;
+using iText.Html2pdf.Resolver.Font;
 
 namespace FatturaElettronica.Extensions
 {
@@ -18,7 +21,7 @@ namespace FatturaElettronica.Extensions
         {
             var tmpPath = Path.GetTempPath();
             var tmpXmlFile = Path.Combine(tmpPath, Path.GetRandomFileName() + ".xml");
-            var tmpHtmlFile = Path.Combine(tmpPath, Path.GetRandomFileName() + ".html");
+            var tmpHtmlFile = tmpXmlFile + ".html";
 
             using (var w = XmlWriter.Create(tmpXmlFile, new XmlWriterSettings { Indent = true }))
             {
@@ -33,20 +36,25 @@ namespace FatturaElettronica.Extensions
 
             var html = new FileStream(tmpHtmlFile, FileMode.Open);
 
-            using (PdfWriter writer = new PdfWriter(outputPath))
+            using (var writer = new Pdf.PdfWriter(outputPath))
             {
-                PdfDocument pdf = new PdfDocument(writer);
-                Geom.PageSize pageSize = Geom.PageSize.A4;
-                pdf.SetDefaultPageSize(pageSize);
+                var pdf = new Pdf.PdfDocument(writer);
+                pdf.SetDefaultPageSize(Geom.PageSize.A4);
 
-                ConverterProperties properties = new ConverterProperties()
+                ConverterProperties converterProperties = new ConverterProperties()
+                    .SetBaseUri(".")
+                    .SetCreateAcroForm(false)
+                    .SetCssApplierFactory(new DefaultCssApplierFactory())
+                    .SetFontProvider(new DefaultFontProvider())
                     .SetMediaDeviceDescription(new MediaDeviceDescription(MediaType.PRINT))
-                    .SetFontProvider(new Font.DefaultFontProvider(true, true, true));
+                    .SetOutlineHandler(new OutlineHandler())
+                    .SetTagWorkerFactory(new DefaultTagWorkerFactory());
 
-                HtmlConverter.ConvertToPdf(html, pdf, properties);
+                HtmlConverter.ConvertToPdf(html, pdf, converterProperties);
             }
 
             html.Close();
+            File.Delete(tmpHtmlFile);
         }
     }
 }

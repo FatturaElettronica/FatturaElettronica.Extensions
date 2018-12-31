@@ -45,7 +45,7 @@ namespace FatturaElettronica.Extensions
                         .SetBaseUri(".")
                         .SetCreateAcroForm(false)
                         .SetCssApplierFactory(new DefaultCssApplierFactory())
-                        .SetFontProvider(new DefaultFontProvider())
+                        .SetFontProvider(new DefaultFontProvider(true, true, true))
                         .SetMediaDeviceDescription(new MediaDeviceDescription(MediaType.PRINT))
                         .SetOutlineHandler(new OutlineHandler())
                         .SetTagWorkerFactory(new DefaultTagWorkerFactory());
@@ -56,7 +56,7 @@ namespace FatturaElettronica.Extensions
                 html.Close();
             }
 
-            //File.Delete(tmpHtmlFile);
+            File.Delete(tmpHtmlFile);
         }
     }
 }

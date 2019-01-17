@@ -6,7 +6,9 @@ v1.3
 
 Unreleased
 
+- New: `ReadXmlSignedBase64()` method. Addresses #30.
 - New: `ReadXml(Stream stream)` (Daniele Bochicchio). Pull #19.
+- Fix: `ReadXmlSigned()` does not support Base64-encoded files. Closes #30.
 - Fix: Improved `ReadXmlSigned()` performance.
 
 v1.2

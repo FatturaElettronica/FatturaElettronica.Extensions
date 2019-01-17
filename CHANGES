@@ -7,6 +7,7 @@ v1.3
 Unreleased
 
 - New: `ReadXml(Stream stream)` (Daniele Bochicchio). Pull #19.
+- Fix: Improved `ReadXmlSigned()` performance.
 
 v1.2
 ====

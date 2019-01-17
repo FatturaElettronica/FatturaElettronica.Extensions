@@ -4,7 +4,7 @@ Estensioni per [FatturaElettronica.NET][fe]
 
 ## Caratteristiche
 
-- `ReadXml(string filePath)`: deserializza file XML non firmato, senza necessita di aprire uno stream.
+- `ReadXml(string filePath)`: deserializza da file XML, senza necessità di aprire uno stream.
 - `ReadXml(Stream stream)`: deserializza da uno stream, senza passare da un file.
 - `ReadXmlSigned(string filePath)`: deserializza da un file firmato digitalmente con algoritmo CADES (.p7m).
 
@@ -22,6 +22,7 @@ In questo esempio leggiamo una fattura elettronica firmata digitalmente usando l
 ```cs
 using System;
 using System.Xml;
+using System.IO;
 using FatturaElettronica;
 using FatturaElettronica.Common;
 using FatturaElettronica.Extensions;
@@ -38,6 +39,8 @@ namespace DemoApp
 
             // Lettura diretta da XML (senza necessità di uno stream aperto)
             fattura.ReadXml("IT02182030391_32.xml");
+            // Lettura da stream
+            fattura.ReadXml(File.OpenRead("IT02182030391_32.xml"));
 
             // Firma digitale del file xml con file pfx
             fattura.WriteXmlSigned("idsrv3test.pfx", "idsrv3test", @"IT02182030391_32.xml.pm7");

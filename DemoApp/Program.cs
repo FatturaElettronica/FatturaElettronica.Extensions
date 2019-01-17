@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Xml;
+using System.IO;
 using FatturaElettronica;
 using FatturaElettronica.Common;
 using FatturaElettronica.Extensions;
 using FatturaElettronica.Defaults;
-
 
 namespace DemoApp
 {
@@ -16,6 +16,8 @@ namespace DemoApp
 
             // Lettura diretta da XML (senza necessità di uno stream aperto)
             fattura.ReadXml("IT02182030391_32.xml");
+            // Lettura da stream
+            fattura.ReadXml(File.OpenRead("IT02182030391_32.xml"));
 
             // Firma digitale del file xml con file pfx
             fattura.WriteXmlSigned("idsrv3test.pfx", "idsrv3test", "IT02182030391_32.xml.pm7");

@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v1.3
+====
+
+Unreleased
+
+- New: `ReadXml(Stream stream)` (Daniele Bochicchio). Pull #19.
+
 v1.2
 ====
 

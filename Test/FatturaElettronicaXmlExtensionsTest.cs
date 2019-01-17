@@ -12,10 +12,17 @@ namespace Test
     public class FatturaElettronicaXmlExtensionsTest
     {
         [TestMethod]
-        public void ReadXML()
+        public void ReadXMLFile()
         {
             var f = Fattura.CreateInstance(Instance.Privati);
             f.ReadXml("Samples/IT02182030391_32.xml");
+            Assert.AreEqual("32", f.FatturaElettronicaHeader.DatiTrasmissione.ProgressivoInvio);
+        }
+        [TestMethod]
+        public void ReadXMLStream()
+        {
+            var f = Fattura.CreateInstance(Instance.Privati);
+            f.ReadXml(File.OpenRead("Samples/IT02182030391_32.xml"));
             Assert.AreEqual("32", f.FatturaElettronicaHeader.DatiTrasmissione.ProgressivoInvio);
         }
         [TestMethod]

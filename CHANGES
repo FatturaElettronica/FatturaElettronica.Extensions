@@ -10,6 +10,7 @@ Unreleased
 - New: `ReadXml(Stream stream)` (Daniele Bochicchio). Pull #19.
 - Fix: `ReadXmlSigned()` does not support Base64-encoded files. Closes #30.
 - Fix: Improved `ReadXmlSigned()` performance.
+- Bump FatturaElettronica to 1.1.1.
 
 v1.2
 ====

@@ -16,16 +16,14 @@ namespace FatturaElettronica.Extensions
                 fattura.ReadXml(r);
             }
         }
-        
         public static void ReadXml(this Fattura fattura, Stream stream)
-		{
-			stream.Position = 0;
-			using (var r = XmlReader.Create(stream, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
-			{
-				fattura.ReadXml(r);
-			}
-		}
-        
+        {
+            stream.Position = 0;
+            using (var r = XmlReader.Create(stream, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
+            {
+                fattura.ReadXml(r);
+            }
+        }
         public static void WriteXml(this Fattura fattura, string filePath)
         {
             using (var w = XmlWriter.Create(filePath, new XmlWriterSettings { Indent = true }))

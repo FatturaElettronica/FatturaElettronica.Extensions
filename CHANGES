@@ -4,7 +4,7 @@ Changelog
 v1.3
 ====
 
-Unreleased
+Released on January 18, 2019
 
 - New: `ReadXmlSignedBase64()` method. Addresses #30.
 - New: `ReadXml(Stream stream)` (Daniele Bochicchio). Pull #19.

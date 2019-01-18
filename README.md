@@ -7,7 +7,7 @@ Estensioni per [FatturaElettronica.NET][fe]
 - `ReadXml(string filePath)`: deserializza da file XML, senza necessità di aprire uno stream;
 - `ReadXml(Stream stream)`: deserializza da stream, senza passare da un file;
 - `ReadXmlSigned(string filePath)`: deserializza da file firmato con algoritmo CADES (.p7m). Supporta sia file in chiaro che codificati Base64;
-- `ReadXmlSignedBase64(string filePath)`: Come `ReadXmlSigned`, consigliato quando si sa in anticipo che il file è codificato Base64;
+- `ReadXmlSignedBase64(string filePath)`: consigliato quando si sa in anticipo che il file è codificato Base64;
 - `WriteXml(string filePath)`: consente di serializzare su file XML non firmato, senza necessità di aprire uno stream;
 - `WriteXmlSigned(string pfxFile,string pfxPassword, string p7mFilePath)`: consente serializzare su file XML, firmando con algoritmo CADES (.p7m), fornendo file .pfx in input;
 - `FromJson(string json)`: deserializza da JSON;

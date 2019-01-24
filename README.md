@@ -15,8 +15,6 @@ Estensioni per [FatturaElettronica.NET][fe]
 
 ## Utilizzo
 
-In questo esempio leggiamo una fattura elettronica firmata digitalmente usando l'extension method `ReadXmlSigned`.
-
 ```cs
 using System;
 using System.Xml;
@@ -92,13 +90,21 @@ FatturaElettronica.Extensions supporta .NET Standard v2.0, cosa che le permette 
 
 ## Installazione
 
-FatturaElettronica.Extensions è su [NuGet][nuget] quindi tutto quel che serve è eseguire:
+FatturaElettronica.Extensions è su [NuGet][nuget].
 
-```powershell
+Dalla command line, con .NET Core:
+
+```Shell
+    dotnet add package FatturaElettronica.Extensions
+```
+
+Dalla Package Console, in Visual Studio:
+
+```PowerShell
     PM> Install-Package FatturaElettronica.Extensions
 ```
 
-dalla Package Console, oppure usare il comando equivalente in Visual Studio.
+Oppure usare il comando equivalente nella UI di Visual Studio.
 
 ## Licenza
 

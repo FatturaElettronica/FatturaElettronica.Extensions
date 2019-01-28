@@ -4,9 +4,11 @@ using iText.Html2pdf.Attach.Impl;
 using iText.Html2pdf.Css.Apply.Impl;
 using iText.Html2pdf.Resolver.Font;
 using iText.IO.Font.Constants;
+using iText.IO.Image;
 using iText.Kernel.Font;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas;
+using iText.Layout.Element;
 using iText.StyledXmlParser.Css.Media;
 using System;
 using System.Collections.Generic;
@@ -34,6 +36,13 @@ namespace FatturaElettronica.Extensions
 
     public static class FatturaElettronicaPdfExtensions
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fattura"></param>
+        /// <param name="filePath">Nome del file di output</param>
+        /// <param name="xslPath">Perorso del foglio di stile</param>
+        /// <param name="action">Azione da eseguire successivamente sul documento </param>
         public static void WritePdfWithAttachment(this Fattura fattura, string filePath, string xslPath, Action<PdfDocument> action)
         {
             var tmpPdfFattura = Path.GetTempFileName();
@@ -42,15 +51,19 @@ namespace FatturaElettronica.Extensions
             using (var writer = new PdfWriter(filePath))
             {
                 var pdf = new PdfDocument(writer);
-                MergeTo(tmpPdfFattura, pdf);
+                MergeTo(pdf, tmpPdfFattura);
 
                 var attachments = ExtractAttachmentsFattura(fattura, tmpPdfFattura);
 
                 foreach (var attachment in attachments)
                 {
-                    if (attachment.Length > 0 && (attachment.Formato == "PDF" || attachment.FileName.EndsWith(".pdf")))
+                    if (attachment.Length > 0 && (attachment.Formato == "PDF" || attachment.FileName.ToLower().EndsWith(".pdf")))
                     {
-                        var pages = MergeTo(attachment.FileName, pdf);
+                        var pages = MergeTo(pdf, attachment.FileName);
+                    }
+                    else if(attachment.Length > 0 && (attachment.Formato == "JPEG" || attachment.FileName.ToLower().EndsWith(".jpg") || attachment.FileName.ToLower().EndsWith(".jpeg")))
+                    {
+                        AddImagePage(pdf, attachment);
                     }
                     else
                     {
@@ -107,6 +120,14 @@ namespace FatturaElettronica.Extensions
             File.Delete(tmpHtmlFile);
         }
 
+        private static void AddImagePage(PdfDocument pdf, AttachmentInfo attachment)
+        {
+            var page = pdf.AddNewPage(Geom.PageSize.A4);
+            PdfCanvas canvas = new PdfCanvas(page);
+
+            ImageData data = ImageDataFactory.Create(File.ReadAllBytes(attachment.FileName));
+            canvas.AddImage(data, Geom.PageSize.A4, false);
+        }
 
         private static PdfPage AddUnsupportedAttachmentsPage(PdfDocument pdf, AttachmentInfo attachment)
         {
@@ -125,7 +146,7 @@ namespace FatturaElettronica.Extensions
             return page;
         }
 
-        private static IList<PdfPage> MergeTo(string pdfPath, PdfDocument pdf)
+        private static IList<PdfPage> MergeTo(PdfDocument pdf, string pdfPath)
         {
 
             IList<PdfPage> pages = null;
@@ -134,7 +155,7 @@ namespace FatturaElettronica.Extensions
                 try
                 {
                     pdfReader.SetUnethicalReading(true);
-                    var pdfDoc = new Pdf.PdfDocument(pdfReader);
+                    var pdfDoc = new PdfDocument(pdfReader);
                     var num = pdfDoc.GetNumberOfPages();
                     pages = pdfDoc.CopyPagesTo(1, num, pdf);
                 }

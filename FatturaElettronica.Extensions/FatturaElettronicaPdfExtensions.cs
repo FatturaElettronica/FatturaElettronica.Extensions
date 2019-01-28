@@ -1,5 +1,4 @@
-﻿using Acer.Re.FattElettronica.Passiva.Archiviazione;
-using iText.Html2pdf;
+﻿using iText.Html2pdf;
 using iText.Html2pdf.Attach.Impl;
 using iText.Html2pdf.Css.Apply.Impl;
 using iText.Html2pdf.Resolver.Font;
@@ -8,7 +7,6 @@ using iText.IO.Image;
 using iText.Kernel.Font;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas;
-using iText.Layout.Element;
 using iText.StyledXmlParser.Css.Media;
 using System;
 using System.Collections.Generic;
@@ -17,7 +15,6 @@ using System.IO.Compression;
 using System.Xml;
 using System.Xml.Xsl;
 using Geom = iText.Kernel.Geom;
-using Pdf = iText.Kernel.Pdf;
 
 
 
@@ -150,7 +147,7 @@ namespace FatturaElettronica.Extensions
         {
 
             IList<PdfPage> pages = null;
-            using (var pdfReader = new Pdf.PdfReader(pdfPath))
+            using (var pdfReader = new PdfReader(pdfPath))
             {
                 try
                 {

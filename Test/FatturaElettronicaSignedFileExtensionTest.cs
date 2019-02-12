@@ -68,6 +68,16 @@ namespace Test
             Assert.ThrowsException<FormatException>(() => f.ReadXmlSigned("Samples/IT02182030391_32.xml"));
         }
         [TestMethod]
+        public void ReadXMLSignedStream()
+        {
+            var f = new Fattura();
+            using (var inputStream = new FileStream("Samples/IT02182030391_31.xml.p7m", FileMode.Open, FileAccess.Read))
+            {
+                f.ReadXmlSigned(inputStream);
+            }
+            Assert.AreEqual("31", f.FatturaElettronicaHeader.DatiTrasmissione.ProgressivoInvio);
+        }
+        [TestMethod]
         public void WriteXmlSigned()
         {
             if (File.Exists("Samples/IT02182030391_32.xml.p7m"))

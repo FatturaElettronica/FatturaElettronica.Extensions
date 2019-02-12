@@ -4,12 +4,13 @@ Estensioni per [FatturaElettronica.NET][fe]
 
 ## Caratteristiche
 
-- `ReadXml(string filePath)`: deserializza da file XML, senza necessità di aprire uno stream;
-- `ReadXml(Stream stream)`: deserializza da stream, senza passare da un file;
-- `ReadXmlSigned(string filePath)`: deserializza da file firmato con algoritmo CADES (.p7m). Supporta sia file in chiaro che codificati Base64;
+- `ReadXml(string filePath)`: deserializza da file XML;
+- `ReadXml(Stream stream)`: deserializza da stream;
+- `ReadXmlSigned(string filePath)`: deserializza da XML firmato con algoritmo CADES (.p7m). Supporta anche file codificati Base64;
+- `ReadXmlSigned(Stream stream)`: deserializza da stream firmato con algoritmo CADES (.p7m). Supporta anche file codificati Base64;
 - `ReadXmlSignedBase64(string filePath)`: consigliato quando si sa in anticipo che il file è codificato Base64;
-- `WriteXml(string filePath)`: consente di serializzare su file XML non firmato, senza necessità di aprire uno stream;
-- `WriteXmlSigned(string pfxFile,string pfxPassword, string p7mFilePath)`: consente serializzare su file XML, firmando con algoritmo CADES (.p7m), fornendo file .pfx in input;
+- `WriteXml(string filePath)`: serializza su file XML non firmato;
+- `WriteXmlSigned(string pfxFile, string pfxPassword, string p7mFilePath)`: serializza su file XML, firmando con algoritmo CADES (.p7m);
 - `FromJson(string json)`: deserializza da JSON;
 - `FatturaElettronicaFileNameGenerator`: classe per la generazione di nomi file conformi allo standard fattura elettronica.
 
@@ -43,8 +44,12 @@ namespace DemoApp
 
             // Legge file con firma digitale. Solleva eccezione se firma invalida.
             fattura.ReadXmlSigned("IT02182030391_31.xml.p7m");
-            // Legge file con firma digitale evitando di convalidarne la firma
+            // Legge file con firma digitale evitando di convalidarne la firma.
             fattura.ReadXmlSigned("IT02182030391_31.xml.p7m", validateSignature: false);
+            // Deserializza da stream con firma digitale. Solleva eccezione se firma non valida.
+            fattura.ReadXmlSigned(someStream);
+            // Deserializza da stream evitando di convalidare la firma.
+            fattura.ReadXmlSigned(someStream, validateSignature: false);
 
             // Scrive direttamente su XML (senza necessità passare uno stream)
             fattura.WriteXml("Copia di IT02182030391_31.xml");

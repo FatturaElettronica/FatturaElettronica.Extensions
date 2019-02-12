@@ -33,7 +33,7 @@ namespace FatturaElettronica.Extensions
         {
             ReadXmlSigned(fattura, new MemoryStream(Convert.FromBase64String(File.ReadAllText(filePath))), validateSignature);
         }
-        private static void ReadXmlSigned(Fattura fattura, Stream stream, bool validateSignature)
+        public static void ReadXmlSigned(this Fattura fattura, Stream stream, bool validateSignature = true)
         {
 
             CmsSignedData signedFile = new CmsSignedData(stream);

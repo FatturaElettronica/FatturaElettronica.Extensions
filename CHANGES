@@ -4,6 +4,7 @@ Changelog
 In Development
 ==============
 
+- New: `ReadXmlSigned(Stream stream)`. Closes #39.
 - Bump FatturaElettronica to 1.1.3
 
 v1.3

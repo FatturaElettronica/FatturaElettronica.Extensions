@@ -49,6 +49,7 @@ namespace FatturaElettronica.Extensions
             {
                 var pdf = new PdfDocument(writer);
                 MergeTo(pdf, tmpPdfFattura);
+                File.Delete(tmpPdfFattura);
 
                 var attachments = ExtractAttachmentsFattura(fattura, tmpPdfFattura);
 
@@ -58,7 +59,7 @@ namespace FatturaElettronica.Extensions
                     {
                         var pages = MergeTo(pdf, attachment.FileName);
                     }
-                    else if(attachment.Length > 0 && (attachment.Formato == "JPEG" || attachment.FileName.ToLower().EndsWith(".jpg") || attachment.FileName.ToLower().EndsWith(".jpeg")))
+                    else if (attachment.Length > 0 && (attachment.Formato == "JPEG" || attachment.FileName.ToLower().EndsWith(".jpg") || attachment.FileName.ToLower().EndsWith(".jpeg")))
                     {
                         AddImagePage(pdf, attachment);
                     }
@@ -204,6 +205,35 @@ namespace FatturaElettronica.Extensions
                             });
                         }
 
+                    }
+                    else if (allegato.AlgoritmoCompressione == "GZIP")
+                    {
+                        FileInfo fileToDecompress = new FileInfo(attachmentFileName);
+
+                        using (FileStream originalFileStream = fileToDecompress.OpenRead())
+                        {
+                            string currentFileName = fileToDecompress.FullName;
+                            string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
+
+                            using (FileStream decompressedFileStream = File.Create(newFileName))
+                            {
+                                using (GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress))
+                                {
+                                    decompressionStream.CopyTo(decompressedFileStream);
+
+                                    allegati.Add(new AttachmentInfo
+                                    {
+                                        FileName = newFileName,
+                                        Nome = allegato.NomeAttachment,
+                                        Formato = allegato.FormatoAttachment,
+                                        Descrizione = allegato.DescrizioneAttachment,
+                                        Length = array.Length
+                                    });
+                                }
+
+                                decompressedFileStream.Close();
+                            }
+                        }
                     }
                     else
                     {

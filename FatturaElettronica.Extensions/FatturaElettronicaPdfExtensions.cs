@@ -103,7 +103,7 @@ namespace FatturaElettronica.Extensions
                         .SetBaseUri(".")
                         .SetCreateAcroForm(false)
                         .SetCssApplierFactory(new DefaultCssApplierFactory())
-                        .SetFontProvider(new DefaultFontProvider(true, false, false))
+                        .SetFontProvider(new DefaultFontProvider(true, true, false))
                         .SetMediaDeviceDescription(new MediaDeviceDescription(MediaType.PRINT))
                         .SetOutlineHandler(new OutlineHandler())
                         .SetTagWorkerFactory(new DefaultTagWorkerFactory());

@@ -23,7 +23,7 @@ namespace Test
             var bytes = File.ReadAllBytes(outFile);
             File.Delete(outFile);
 
-            Assert.AreEqual(14393, bytes.Length);
+            Assert.IsTrue(bytes.Length > 2048);
         }
     }
 }

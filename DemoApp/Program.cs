@@ -30,6 +30,10 @@ namespace DemoApp
             // Scrive direttamente su XML (senza necessità passare uno stream)
             fattura.WriteXml("Copia di IT02182030391_31.xml");
 
+            // Crea HTML della fattura. Usa foglio di stile PA
+            // (https://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2.1/fatturaPA_v1.2.1.xsl)
+            fattura.WriteHtml("fattura.htm", "fatturaPA_v1.2.1.xsl");
+
             // Serializza fattura in JSON.
             var json = fattura.ToJson();
 

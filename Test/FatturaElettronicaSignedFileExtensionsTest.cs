@@ -90,7 +90,7 @@ namespace Test
         public void WriteXmlSignedThrowsOnMissingPfxFile()
         {
             var f = Fattura.CreateInstance(Instance.Privati);
-            Assert.ThrowsException<FatturaElettronicaSignatureExceptions>(() =>
+            Assert.ThrowsException<FatturaElettronicaSignatureException>(() =>
                 f.WriteXmlSigned("Samples/notreally.pfx", "idsrv3test", "Samples/IT02182030391_32.xml.p7m"));
         }
     }

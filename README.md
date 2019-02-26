@@ -133,7 +133,7 @@ Oppure usare il comando equivalente nella UI di Visual Studio.
 ## Licenza
 
 FatturaElettronica è un progetto open source di [Nicola Iarocci][ni] e [Gestionale Amica][ga] rilasciato sotto licenza [BSD][bsd].
-BouncyCastle, Copyright (c) 2000 - 2017 The Legion of the Bouncy Castle Inc. ([licenza][bc]
+BouncyCastle, Copyright (c) 2000 - 2017 The Legion of the Bouncy Castle Inc. ([licenza][bc]).
 
 [fe]: http://github.com/FatturaElettronica/FatturaElettronica.NET
 [bsd]: http://github.com/FatturaElettronica/FatturaElettronica.Extensions/blob/master/LICENSE

@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Org.BouncyCastle.Cms;
 using System.IO;
 using System.Xml;
+using System;
 
 namespace Test
 {

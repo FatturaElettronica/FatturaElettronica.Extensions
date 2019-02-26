@@ -4,6 +4,8 @@ Changelog
 In Development
 ==============
 
+- New: `WriteHtml(string outPath, string xslPath)` crea HTML della fattura usando un foglio di stile.
+
 v1.4
 ====
 

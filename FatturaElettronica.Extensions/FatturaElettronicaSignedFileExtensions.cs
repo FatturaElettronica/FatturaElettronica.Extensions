@@ -12,7 +12,7 @@ using Org.BouncyCastle.X509.Store;
 
 namespace FatturaElettronica.Extensions
 {
-    public static class FatturaElettronicaSignedFileExtension
+    public static class FatturaElettronicaSignedFileExtensions
     {
         public static void ReadXmlSigned(this Fattura fattura, string filePath, bool validateSignature = true)
         {

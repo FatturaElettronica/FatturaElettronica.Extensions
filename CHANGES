@@ -4,6 +4,13 @@ Changelog
 In Development
 ==============
 
+- hic sunt leones.
+
+v1.5
+====
+
+Released on February 26, 2019
+
 - New: `WriteHtml(string outPath, string xslPath)` crea HTML della fattura usando un foglio di stile.
 
 v1.4

@@ -9,7 +9,7 @@
     <Copyright>Copyright © CIR2000 2018-2019</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/FatturaElettronica/FatturaElettronica.Extensions/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/FatturaElettronica/FatturaElettronica.Extensions</RepositoryUrl>
-    <PackageProjectUrl>http://fatturaelettronicaopensource.org</PackageProjectUrl>
+    <PackageProjectUrl>https://fatturaelettronicaopensource.org</PackageProjectUrl>
     <Version>1.5</Version>
   </PropertyGroup>
 

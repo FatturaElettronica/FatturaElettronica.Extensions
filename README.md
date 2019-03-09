@@ -1,4 +1,4 @@
-﻿# FatturaElettronica.Extensions [![Build status](https://ci.appveyor.com/api/projects/status/sp1ux45txvug7ujp?svg=true)](https://ci.appveyor.com/project/nicolaiarocci/fatturaelettronica-extensions) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=FatturaElettronica/FatturaElettronica.Extensions)](https://dependabot.com)
+﻿# FatturaElettronica.Extensions [![Build Status](https://dev.azure.com/FatturaElettronicaNET/FatturaElettronica.Extensions/_apis/build/status/FatturaElettronica.FatturaElettronica.Extensions?branchName=master)](https://dev.azure.com/FatturaElettronicaNET/FatturaElettronica.Extensions/_build/latest?definitionId=3&branchName=master) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=FatturaElettronica/FatturaElettronica.Extensions)](https://dependabot.com)
 
 Estensioni per [FatturaElettronica.NET][fe]
 

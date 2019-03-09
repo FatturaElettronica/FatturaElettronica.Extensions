@@ -8,6 +8,7 @@ In Development
 - Bump Portable.BouncyCastle to 1.8.5.
 - Bump System.Security.Cryptography.Pkcs to 4.5.2.
 - Bump Newtonsoft.Json to 12.0.1.
+- CI: switch da AppVeyor a Azure Pipelines. Closes #52.
 
 v1.5
 ====

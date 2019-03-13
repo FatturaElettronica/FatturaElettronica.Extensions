@@ -14,7 +14,7 @@ namespace FatturaElettronica.Extensions
 {
     public static class FatturaElettronicaSignedFileExtensions
     {
-        public static void ReadXmlSigned(this Fattura fattura, string filePath, bool validateSignature = true)
+        public static void ReadXmlSigned(this FatturaBase fattura, string filePath, bool validateSignature = true)
         {
             try
             {
@@ -29,11 +29,11 @@ namespace FatturaElettronica.Extensions
                 ReadXmlSignedBase64(fattura, filePath, validateSignature);
             }
         }
-        public static void ReadXmlSignedBase64(this Fattura fattura, string filePath, bool validateSignature = true)
+        public static void ReadXmlSignedBase64(this FatturaBase fattura, string filePath, bool validateSignature = true)
         {
             ReadXmlSigned(fattura, new MemoryStream(Convert.FromBase64String(File.ReadAllText(filePath))), validateSignature);
         }
-        public static void ReadXmlSigned(this Fattura fattura, Stream stream, bool validateSignature = true)
+        public static void ReadXmlSigned(this FatturaBase fattura, Stream stream, bool validateSignature = true)
         {
 
             CmsSignedData signedFile = new CmsSignedData(stream);
@@ -67,7 +67,7 @@ namespace FatturaElettronica.Extensions
             }
         }
 
-        public static void WriteXmlSigned(this Fattura fattura, string pfxFile, string pfxPassword, string p7mFilePath)
+        public static void WriteXmlSigned(this FatturaBase fattura, string pfxFile, string pfxPassword, string p7mFilePath)
         {
             if (!File.Exists(pfxFile))
                 throw new FatturaElettronicaSignatureException(Resources.ErrorMessages.PfxIsMissing);
@@ -75,7 +75,7 @@ namespace FatturaElettronica.Extensions
             var cert = new X509Certificate2(pfxFile, pfxPassword);
             WriteXmlSigned(fattura, cert, p7mFilePath);
         }
-        public static void WriteXmlSigned(this Fattura fattura, X509Certificate2 cert, string p7mFilePath)
+        public static void WriteXmlSigned(this FatturaBase fattura, X509Certificate2 cert, string p7mFilePath)
         {
             string res = string.Empty;
             string tempFile = Path.GetTempFileName();

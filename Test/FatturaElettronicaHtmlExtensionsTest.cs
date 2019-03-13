@@ -6,6 +6,7 @@ using Org.BouncyCastle.Cms;
 using System.IO;
 using System.Xml;
 using System;
+using FatturaElettronica.Ordinaria;
 
 namespace Test
 {
@@ -15,7 +16,7 @@ namespace Test
         [TestMethod]
         public void WriteHtml()
         {
-            var f = new Fattura();
+            var f = new FatturaOrdinaria();
             var outFile = Path.GetTempFileName();
             f.ReadXml("Samples/IT02182030391_32.xml");
 
@@ -27,7 +28,7 @@ namespace Test
         [TestMethod]
         public void WriteHtmlThrowsOnInvalidArguments()
         {
-            var f = new Fattura();
+            var f = new FatturaOrdinaria();
 
             Assert.ThrowsException<ArgumentNullException>(() => f.WriteHtml(outPath: null, xslPath: "xslPath"));
             Assert.ThrowsException<ArgumentNullException>(() => f.WriteHtml(outPath: "fileName", xslPath: null));

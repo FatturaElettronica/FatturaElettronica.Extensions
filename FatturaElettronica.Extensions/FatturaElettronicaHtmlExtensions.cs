@@ -11,7 +11,7 @@ namespace FatturaElettronica.Extensions
 {
     public static class FatturaElettronicaHtmlExtensions
     {
-        public static void WriteHtml(this Fattura fattura, string outPath, string xslPath)
+        public static void WriteHtml(this FatturaBase fattura, string outPath, string xslPath)
         {
             if (outPath == null)
             {

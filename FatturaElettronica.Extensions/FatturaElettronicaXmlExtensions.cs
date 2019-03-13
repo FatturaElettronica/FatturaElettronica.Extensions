@@ -9,14 +9,14 @@ namespace FatturaElettronica.Extensions
 {
     public static class FatturaElettronicaXmlExtensions
     {
-        public static void ReadXml(this Fattura fattura, string filePath)
+        public static void ReadXml(this FatturaBase fattura, string filePath)
         {
             using (var r = XmlReader.Create(filePath, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
             {
                 fattura.ReadXml(r);
             }
         }
-        public static void ReadXml(this Fattura fattura, Stream stream)
+        public static void ReadXml(this FatturaBase fattura, Stream stream)
         {
             stream.Position = 0;
             using (var r = XmlReader.Create(stream, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
@@ -24,7 +24,7 @@ namespace FatturaElettronica.Extensions
                 fattura.ReadXml(r);
             }
         }
-        public static void WriteXml(this Fattura fattura, string filePath)
+        public static void WriteXml(this FatturaBase fattura, string filePath)
         {
             using (var w = XmlWriter.Create(filePath, new XmlWriterSettings { Indent = true }))
             {

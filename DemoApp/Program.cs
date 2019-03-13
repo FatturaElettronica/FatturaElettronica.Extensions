@@ -5,6 +5,7 @@ using FatturaElettronica;
 using FatturaElettronica.Common;
 using FatturaElettronica.Extensions;
 using FatturaElettronica.Defaults;
+using FatturaElettronica.Ordinaria;
 
 namespace DemoApp
 {
@@ -12,7 +13,7 @@ namespace DemoApp
     {
         static void Main(string[] args)
         {
-            var fattura = Fattura.CreateInstance(Instance.Privati);
+            var fattura = FatturaOrdinaria.CreateInstance(Instance.Privati);
 
             // Lettura diretta da XML (senza necessità di uno stream aperto)
             fattura.ReadXml("IT02182030391_32.xml");
@@ -37,7 +38,7 @@ namespace DemoApp
             // Serializza fattura in JSON.
             var json = fattura.ToJson();
 
-            var copia = Fattura.CreateInstance(Instance.Privati);
+            var copia = FatturaOrdinaria.CreateInstance(Instance.Privati);
 
             // Deserializza da JSON
             copia.FromJson(json);

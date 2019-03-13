@@ -4,6 +4,13 @@ Changelog
 In Development
 ==============
 
+- hic sunt leones.
+
+v2.0
+====
+
+Released on March 13, 2019.
+
 - Fix: warning NU5125: The 'licenseUrl' element will be deprecated. Closes #23.
 - Bump FatturaElettronica to 2.0.
 - Bump Microsoft.NET.Test.Sdk to 16.0.1.

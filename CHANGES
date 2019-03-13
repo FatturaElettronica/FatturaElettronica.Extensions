@@ -4,6 +4,7 @@ Changelog
 In Development
 ==============
 
+- Fix: warning NU5125: The 'licenseUrl' element will be deprecated. Closes #23.
 - Bump FatturaElettronica to 2.0.
 - Bump Microsoft.NET.Test.Sdk to 16.0.1.
 - Bump Portable.BouncyCastle to 1.8.5.

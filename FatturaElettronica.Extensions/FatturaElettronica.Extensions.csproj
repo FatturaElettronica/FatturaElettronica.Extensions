@@ -3,15 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.5</Version>
     <Authors>Nicola Iarocci</Authors>
     <Company>CIR 2000</Company>
     <Description>Estensioni per FatturaElettronica.NET. Consente lettura e scrittura di file firmati digitalmente (.p7m).</Description>
     <Copyright>Copyright © CIR2000 2018-2019</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/FatturaElettronica/FatturaElettronica.Extensions/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/FatturaElettronica/FatturaElettronica.Extensions</RepositoryUrl>
     <PackageProjectUrl>https://fatturaelettronicaopensource.org</PackageProjectUrl>
-    <Version>1.5</Version>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../LICENSE.txt" Pack="true" PackagePath=""/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />

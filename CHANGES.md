@@ -2,12 +2,12 @@ Changelog
 =========
 
 In Development
-==============
+--------------
 
 - hic sunt leones.
 
 v2.0
-====
+----
 
 Released on March 13, 2019.
 
@@ -20,14 +20,14 @@ Released on March 13, 2019.
 - CI: switch da AppVeyor a Azure Pipelines. Closes #52.
 
 v1.5
-====
+----
 
 Released on February 26, 2019
 
 - New: `WriteHtml(string outPath, string xslPath)` crea HTML della fattura usando un foglio di stile.
 
 v1.4
-====
+----
 
 Released on February 12, 2019
 
@@ -35,7 +35,7 @@ Released on February 12, 2019
 - Bump FatturaElettronica to 1.1.5
 
 v1.3
-====
+----
 
 Released on January 18, 2019
 
@@ -46,7 +46,7 @@ Released on January 18, 2019
 - Bump FatturaElettronica to 1.1.1.
 
 v1.2
-====
+----
 
 Released on December 30, 2018
 
@@ -55,7 +55,7 @@ Released on December 30, 2018
 - Dump FatturaElettronica to 1.0.2.
 
 v1.1
-====
+----
 
 Released on December 1, 2018
 
@@ -64,7 +64,7 @@ Released on December 1, 2018
 - Bump MSTest.TestAdapter to 1.4.0
 
 v1.0.1
-======
+------
 
 Released on November 9, 2018
 
@@ -74,14 +74,14 @@ Released on November 9, 2018
 - Bump Microsoft.Net.Test.Sdk to 15.9.0.
 
 v1.0
-====
+----
 
 Released on November 9, 2018
 
 - Bump FatturaElettronica to 1.0.1.
 
 v0.4
-====
+----
 
 Released on October 27, 2018
 
@@ -90,7 +90,7 @@ Released on October 27, 2018
 - Dependency: Newtonsoft.Json (new).
 
 v0.3
-====
+----
 
 Released on October 12, 2018
 
@@ -101,7 +101,7 @@ Released on October 12, 2018
 - CI integration on AppVeyor. Closes #2.
 
 v0.2
-====
+----
 
 Released on October 1, 2018
 
@@ -111,7 +111,7 @@ Released on October 1, 2018
 - Enhancement: improve the signature-stripping algorithm. We don't really need a temporary folder.
 
 v0.1.0
-======
+------
 
 Released on September 27, 2018.
 

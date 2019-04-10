@@ -4,7 +4,9 @@ Changelog
 In Development
 --------------
 
-- hic sunt leones.
+- Bump FatturaElettronica to 2.0.3 ([#57][57]).
+
+[57]: https://github.com/FatturaElettronica/FatturaElettronica.Extensions/pulls/57
 
 v2.0
 ----

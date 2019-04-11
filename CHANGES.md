@@ -4,8 +4,10 @@ Changelog
 In Development
 --------------
 
+- Aggiunto nuget badge al README ([#58][58])
 - Bump FatturaElettronica to 2.0.3 ([#57][57]).
 
+[58]: https://github.com/FatturaElettronica/FatturaElettronica.Extensions/pulls/58
 [57]: https://github.com/FatturaElettronica/FatturaElettronica.Extensions/pulls/57
 
 v2.0

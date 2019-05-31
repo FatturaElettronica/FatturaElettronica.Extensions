@@ -6,7 +6,7 @@ In Development
 
 - Fix: XML con elementi `ProcessingInstruction` causano errore in lettura ([#66][66])
 - Aggiunto nuget badge al README ([#58][58])
-- Bump FatturaElettronica to 2.0.3 ([#57][57]).
+- Bump FatturaElettronica to 2.0.6 ([#57][57]).
 
 [66]: https://github.com/FatturaElettronica/FatturaElettronica.Extensions/issues/66
 [58]: https://github.com/FatturaElettronica/FatturaElettronica.Extensions/pulls/58

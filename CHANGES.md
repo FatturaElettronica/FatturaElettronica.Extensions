@@ -4,6 +4,13 @@ Changelog
 In Development
 --------------
 
+- hic sunt leones.
+
+v2.0.1
+------
+
+Released on May 31, 2019.
+
 - Fix: XML con elementi `ProcessingInstruction` causano errore in lettura ([#66][66])
 - Aggiunto nuget badge al README ([#58][58])
 - Bump FatturaElettronica to 2.0.6 ([#57][57]).

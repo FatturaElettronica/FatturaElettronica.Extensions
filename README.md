@@ -54,6 +54,17 @@ Oppure usare il comando equivalente nella UI di Visual Studio.
 FatturaElettronica.Extensions è un progetto open source di [Nicola Iarocci][ni] e [Gestionale Amica][ga] rilasciato sotto licenza [BSD][bsd].
 BouncyCastle, Copyright (c) 2000 - 2017 The Legion of the Bouncy Castle Inc. ([licenza][bc]).
 
+### Sponsorship
+
+Se usi FatturaElettronica.NET o qualcun altro dei miei progetti in un
+prodotto che genera profitto, buon senso vorrebbe che tu sponsorizzassi la
+mia attività open source. Contribuiresti a far sì che il progetto su cui si
+basa il tuo prodotto rimanga sano, attivo, e mantenuto nel tempo. Avresti
+inoltre, se lo desideri, un premio in visibilità per te o la tua azienda.
+Ogni singola sottoscrizione ha un impatto significante.
+
+Scopri come puoi partecipare sulla mia pagina [GitHub Sponsors][ghs]
+
 [fe]: http://github.com/FatturaElettronica/FatturaElettronica.NET
 [bsd]: http://github.com/FatturaElettronica/FatturaElettronica.Extensions/blob/master/LICENSE.txt
 [ga]: http://gestionaleamica.com
@@ -61,3 +72,4 @@ BouncyCastle, Copyright (c) 2000 - 2017 The Legion of the Bouncy Castle Inc. ([l
 [nuget]: https://www.nuget.org/packages/FatturaElettronica.Extensions/
 [netstandard]: https://github.com/dotnet/standard/blob/master/docs/versions/netstandard2.0.md
 [bc]: http://www.bouncycastle.org/csharp/licence.html
+[ghs]: https://github.com/sponsors/nicolaiarocci

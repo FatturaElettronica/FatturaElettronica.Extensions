@@ -4,6 +4,8 @@
 
 Extension methods per [FatturaElettronica.NET][fe]
 
+**Questo progetto è ora incorporato in [FatturaElettronica.NET][fe] v3.0+. Di conseguenza il repository non viene più aggiornato.**
+
 ## Caratteristiche
 
 ### XML
